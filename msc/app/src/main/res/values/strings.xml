@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MediCare</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="username">u</string>
+    <string name="password">p</string>
+    <string name="cnf_password">Confirm Password</string>
+    <string name="not_registered">Not Registered ? </string>
+    <string name="register"> REGISTER </string>
+    <string name="login">"LOGIN"</string>
+    <string name="already_login">Already Registered ?</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+</resources>

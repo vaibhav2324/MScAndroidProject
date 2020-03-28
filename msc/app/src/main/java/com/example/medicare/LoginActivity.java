@@ -37,38 +37,32 @@ public class LoginActivity extends AppCompatActivity {
                 }
         });
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String user = textUsername.getText().toString().trim();
-                String pwd = textPassword.getText().toString().trim();
-
-                if(user=="santosh"&&pwd=="santosh")
-                {
-                    Toast.makeText(LoginActivity.this,"Successfully Logged In",Toast.LENGTH_SHORT);
-                    Intent moveToMain = new Intent(LoginActivity.this,MainActivity.class);
-                }
-                else
-                {
-                    Toast.makeText(LoginActivity.this,"Login Error",Toast.LENGTH_SHORT);
-                }
-            }
-
-        });
+//        buttonLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String user = textUsername.getText().toString().trim();
+//                String pwd = textPassword.getText().toString().trim();
+//
+//                if(user=="santosh"&&pwd=="santosh")
+//                {
+//                    Toast.makeText(LoginActivity.this,"Successfully Logged In",Toast.LENGTH_SHORT);
+//                    Intent moveToMain = new Intent(LoginActivity.this,MainActivity.class);
+//                }
+//                else
+//                {
+//                    Toast.makeText(LoginActivity.this,"Login Error",Toast.LENGTH_SHORT);
+//                }
+//            }
+//
+//        });
 
     }
 String user;
     String pwd;
-
-
-
-
-
     public void loginchecking(View view) {
         user = textUsername.getText().toString().trim();
         pwd = textPassword.getText().toString().trim();
-         Boolean res = db.checkUser(user,pwd);
-        //checkUserAndPassword(user,pwd);
+         Boolean res = checkUser(user,pwd);
         if(res)
         {
             Log.i("Info","Login Success");
@@ -83,9 +77,11 @@ String user;
             Toast.makeText(LoginActivity.this,"Login Error",Toast.LENGTH_SHORT).show();
         }
     }
-    private Boolean checkUserAndPassword(String user, String pwd) {
-        if(user.equals("santosh")&&pwd.equals("santosh"))
+
+    private Boolean checkUser(String user, String pwd) {
+        if(user.equals("sonali")&&pwd.equals("sonali"))
             return true;
-        return  false;
+        return false;
     }
+
 }

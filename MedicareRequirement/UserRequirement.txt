@@ -1,0 +1,10 @@
+UserRequiredMent
+
+id
+name
+email
+mob
+age
+gender
+photo
+password

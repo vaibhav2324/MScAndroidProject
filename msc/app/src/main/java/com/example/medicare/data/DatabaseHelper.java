@@ -15,6 +15,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_1="ID";
     public static final String COL_2="username";
     public static final String COL_3="password";
+    public static final String COL_4="age";
+    public static final String COL_5="mobile";
+    public static final String COL_6="gender";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -32,11 +35,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-        public long addUser(String user,String password){
+        public long addUser(String user,String password,String age){
         SQLiteDatabase db=getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put("username",user);
         contentValues.put("password",password);
+        contentValues.put("age",age);
         long res = db.insert("registeruser",null,contentValues);
         db.close();
         return res;

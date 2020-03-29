@@ -29,7 +29,6 @@ public class RegisterActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         textUsername = (EditText)findViewById(R.id.edittext_username);
         textPassword = (EditText)findViewById(R.id.edittext_password);
-        textCnfPassword = (EditText)findViewById(R.id.edittext_cnf_password);
         buttonRegister = (Button) findViewById(R.id.button_register);
         textLogin = (TextView) findViewById(R.id.textview_login);
         textLogin.setOnClickListener(new View.OnClickListener() {

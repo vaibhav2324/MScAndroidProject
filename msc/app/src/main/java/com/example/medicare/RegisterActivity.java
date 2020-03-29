@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.medicare.data.DatabaseHelper;
+
 public class RegisterActivity extends AppCompatActivity {
 
     EditText textUsername;
@@ -47,19 +49,16 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(pwd.equals(cnf_pwd))
                 {
-                    long val = db.addUser(user,pwd);
-                    if(val>0){
-                        Toast.makeText(RegisterActivity.this,"You have Registered Successfully",Toast.LENGTH_SHORT);
+
+                        Toast.makeText(RegisterActivity.this,"You have Registered Successfully",Toast.LENGTH_SHORT).show();
                         Intent moveToLogin = new Intent(RegisterActivity.this,LoginActivity.class);
+                        db.addUser(user,pwd);
                         startActivity(moveToLogin);
-                    }
-                    else {
-                        Toast.makeText(RegisterActivity.this,"Registration Error! ",Toast.LENGTH_SHORT);
-                    }
+
                 }
                 else
                 {
-                    Toast.makeText(RegisterActivity.this,"Password is not matching",Toast.LENGTH_SHORT);
+                    Toast.makeText(RegisterActivity.this,"Password is not matching",Toast.LENGTH_SHORT).show();
                 }
             }
         });

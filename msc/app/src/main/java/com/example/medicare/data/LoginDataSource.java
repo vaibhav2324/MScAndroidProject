@@ -1,6 +1,6 @@
 package com.example.medicare.data;
 
-import com.example.medicare.data.model.LoggedInUser;
+import com.example.medicare.model.LoggedInUser;
 
 import java.io.IOException;
 

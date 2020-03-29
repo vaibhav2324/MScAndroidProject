@@ -1,4 +1,4 @@
-package com.example.medicare;
+package com.example.medicare.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -18,6 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
+
     }
 
     @Override
@@ -31,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public long addUser(String user,String password){
+        public long addUser(String user,String password){
         SQLiteDatabase db=getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put("username",user);
@@ -44,13 +45,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean checkUser(String username, String password){
         String[] columns = { COL_1 };
         SQLiteDatabase db = getReadableDatabase();
-        String selection = COL_2 + "=?" + COL_3 + "=?";
+        String selection = COL_2 + "=? and " + COL_3 + "=?";
         String[] selectionArgs = {username,password};
         Cursor cursor = db.query(TABLE_NAME,columns,selection,selectionArgs,null,null,null);
         int count= cursor.getCount();
         cursor.close();
         db.close();
-
         if(count>0)
             return true;
         else

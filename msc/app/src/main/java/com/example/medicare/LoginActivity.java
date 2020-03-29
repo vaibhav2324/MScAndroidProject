@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.medicare.data.DatabaseHelper;
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText textUsername;
@@ -24,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
-//        db = new DatabaseHelper(this);
+        db = new DatabaseHelper(this);
         textUsername = (EditText)findViewById(R.id.edittext_username);
         textPassword = (EditText)findViewById(R.id.edittext_password);
         buttonLogin = (Button) findViewById(R.id.button_login);
@@ -62,7 +64,7 @@ String user;
     public void loginchecking(View view) {
         user = textUsername.getText().toString().trim();
         pwd = textPassword.getText().toString().trim();
-         Boolean res = checkUser(user,pwd);
+         Boolean res = db.checkUser(user,pwd);
         if(res)
         {
             Log.i("Info","Login Success");

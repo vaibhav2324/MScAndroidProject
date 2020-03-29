@@ -1,6 +1,8 @@
-package com.example.medicare.data;
+package com.example.medicare.dao;
 
-import com.example.medicare.data.model.LoggedInUser;
+import com.example.medicare.data.LoginDataSource;
+import com.example.medicare.data.Result;
+import com.example.medicare.model.LoggedInUser;
 
 /**
  * Class that requests authentication and user information from the remote data source and

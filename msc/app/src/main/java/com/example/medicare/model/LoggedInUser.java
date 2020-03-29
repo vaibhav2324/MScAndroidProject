@@ -1,4 +1,4 @@
-package com.example.medicare.data.model;
+package com.example.medicare.model;
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

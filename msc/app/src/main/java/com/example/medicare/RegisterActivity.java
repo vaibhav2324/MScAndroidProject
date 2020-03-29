@@ -45,13 +45,12 @@ public class RegisterActivity extends AppCompatActivity {
                 String user = textUsername.getText().toString().trim();
                 String pwd = textPassword.getText().toString().trim();
                 String cnf_pwd = textCnfPassword.getText().toString().trim();
-
                 if(pwd.equals(cnf_pwd))
                 {
 
                         Toast.makeText(RegisterActivity.this,"You have Registered Successfully",Toast.LENGTH_SHORT).show();
                         Intent moveToLogin = new Intent(RegisterActivity.this,LoginActivity.class);
-                        db.addUser(user,pwd);
+                        db.addUser(user,pwd,"");
                         startActivity(moveToLogin);
 
                 }

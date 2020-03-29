@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText textPassword;
     Button cirLoginButton;
     TextView textRegister;
-    com.example.medicare.DatabaseHelper db;
+    com.example.medicare.data.DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         textUsername = (EditText)findViewById(R.id.edittext_username);
         textPassword = (EditText)findViewById(R.id.edittext_password);
-        cirLoginButton = (Button) findViewById(R.id.cirLoginButton);
+        cirLoginButton = (Button) findViewById(R.id.button_login);
         textRegister = (TextView) findViewById(R.id.textview_register);
         textRegister.setOnClickListener(new View.OnClickListener() {
             @Override

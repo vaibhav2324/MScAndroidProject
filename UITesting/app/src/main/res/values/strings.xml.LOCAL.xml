@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">UITestingApplication</string>
+    <string name="title">Appointment</string>
+    <string name="appointment_title">Appointment Title</string>
+    <string name="doctor_name">Doctor Name</string>
+    <string name="date_time">Select Time and Date</string>
+    <string name="result">Time and Date</string>
+
+    <string name="button">Done</string>
+</resources>

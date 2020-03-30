@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.security.PublicKey;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME="Register.db";
@@ -18,6 +20,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_4="age";
     public static final String COL_5="mobile";
     public static final String COL_6="gender";
+    public static final String TABLE="medicine";
+    public static final String COL_7="ID";
+    public static final String COL_8="medicineName";
+    public static final String COL_9="medicineColor";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -27,11 +33,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE registeruser(ID INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, password TEXT)");
+        db.execSQL("CREATE TABLE medicine(ID INTEGER PRIMARY KEY AUTOINCREMENT, medicineName TEXT , medicineColor TEXT)");
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE);
         onCreate(db);
     }
 
@@ -44,6 +54,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long res = db.insert("registeruser",null,contentValues);
         db.close();
         return res;
+
+        public long addMedicine(String medicine_name, String medicine_color){
+            SQLiteDatabase db=getWritableDatabase();
+            ContentValues contentValues1=new ContentValues();
+            }
+
+
     }
 
     public boolean checkUser(String username, String password){

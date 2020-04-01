@@ -22,7 +22,8 @@
         android:layout_height="45dp"
         android:layout_marginTop="30dp"
         android:drawableLeft="@drawable/username"
-        android:text="@string/name"
+        android:hint="@string/name"
+        android:inputType="text"
         tools:layout_editor_absoluteX="206dp"
         tools:layout_editor_absoluteY="238dp" />
 
@@ -31,7 +32,8 @@
         android:layout_width="250dp"
         android:layout_height="45dp"
         android:drawableLeft="@drawable/username"
-        android:text="@string/username"
+        android:hint="@string/username"
+        android:inputType="textEmailAddress"
         tools:layout_editor_absoluteX="202dp"
         tools:layout_editor_absoluteY="387dp" />
 
@@ -40,7 +42,8 @@
         android:layout_width="250dp"
         android:layout_height="45dp"
         android:drawableLeft="@drawable/password"
-        android:text="@string/password"
+        android:hint="@string/password"
+        android:inputType="textPassword"
         tools:layout_editor_absoluteX="202dp"
         tools:layout_editor_absoluteY="387dp" />
 
@@ -50,7 +53,8 @@
         android:layout_width="250dp"
         android:layout_height="45dp"
         android:drawableLeft="@drawable/username"
-        android:text="@string/age"
+        android:inputType="number"
+        android:hint="@string/age"
         tools:layout_editor_absoluteX="202dp"
         tools:layout_editor_absoluteY="387dp" />
 
@@ -59,7 +63,8 @@
         android:layout_width="250dp"
         android:layout_height="45dp"
         android:drawableLeft="@drawable/username"
-        android:text="@string/mobile"
+        android:hint="@string/mobile"
+        android:inputType="phone"
         tools:layout_editor_absoluteX="202dp"
         tools:layout_editor_absoluteY="387dp" />
 

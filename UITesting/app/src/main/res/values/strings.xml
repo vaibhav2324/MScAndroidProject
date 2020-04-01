@@ -7,7 +7,7 @@
     <string name="result">Time and Date</string>
 
     <string name="button">Done</string>
-	 <string name="app_name">Test UI</string>
+    <string name="med_name">Medicine Name</string>
     <string name="medicine">Medicine</string>
     <string name="med_description">Your Medicines are here</string>
     <string name="med_button">Medicine button</string>
@@ -15,9 +15,18 @@
     <string name="appoint_description">Take Appointments from here</string>
     <string name="appoint_button">Appointment button</string>
     <string name="users">Users</string>
+    <string name="instructions">Instructions for taking medicines</string>
+    <string name="med_color">Medicine Colour</string>
+    <string name="med_image">Medicine Image</string>
+    <string name="instruction_1">Before Eating</string>
+    <string name="instruction_2">While Eating</string>
+    <string name="instruction_3">After Eating</string>
+    <string name="instruction_4">Not Matters</string>
     <string name="user_description">View Users</string>
     <string name="users_button">Users button</string>
     <string name="reports">Reports</string>
+    <string name="ongoing_treatment">Onging Treatment</string>
+    <string name="no_of_days">Number of Days</string>
     <string name="report_description">Save your Reports here</string>
     <string name="reports_button">Reports button</string>
     <string name="settings">Settings</string>

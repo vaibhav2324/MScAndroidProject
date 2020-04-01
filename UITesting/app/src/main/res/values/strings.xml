@@ -32,4 +32,12 @@
     <string name="settings">Settings</string>
     <string name="settings_button">Settings button</string>
     <string name="setting_descrription">Edit Settings</string>
+    <string name="Report">Report</string>
+    <string name="Reports">Reports Description</string>
+    <string name="Save">Save</string>
+    <string name="fileName">Enter File Name</string>
+    <string name="upload">Upload</string>
+    <string name="showUploads">Show Uploads</string>
+    <string name="savedReports">Saved All Reports</string>
+
 </resources>

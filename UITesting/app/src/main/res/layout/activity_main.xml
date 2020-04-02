@@ -29,6 +29,7 @@
         android:layout_width="130dp"
         android:textAlignment="center"
         android:textSize="30dp"
+        android:textStyle="italic"
         android:gravity="center"
         android:layout_marginRight="190dp"
         android:textColor="@color/white"
@@ -54,7 +55,6 @@
         android:layout_height="40dp"
         android:gravity="center"
         />
-
 
 
     <RadioGroup
@@ -104,6 +104,7 @@
 
     </LinearLayout>
     <ImageView
+        android:src="@drawable/preview"
     android:layout_width="100dp"
     android:layout_height="100dp"
     android:layout_marginBottom="10dp"
@@ -147,7 +148,17 @@
         android:gravity="center"
         android:text="@string/med_color"/>
 
+    <Button
+        android:id="@+id/med_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/med_color"/>
 
-
+        <LinearLayout
+            android:id="@+id/color_viewer"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:gravity="center"
+            android:orientation="vertical"/>
     </LinearLayout>
 </ScrollView>

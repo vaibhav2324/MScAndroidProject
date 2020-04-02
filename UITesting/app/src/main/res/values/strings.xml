@@ -17,6 +17,7 @@
     <string name="users">Users</string>
     <string name="instructions">Instructions for taking medicines</string>
     <string name="med_color">Medicine Colour</string>
+    <string name="pick_color">Pick Colour</string>
     <string name="med_image">Medicine Image</string>
     <string name="instruction_1">Before Eating</string>
     <string name="instruction_2">While Eating</string>

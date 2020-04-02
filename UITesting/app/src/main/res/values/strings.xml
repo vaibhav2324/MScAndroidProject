@@ -31,8 +31,9 @@
     <string name="reports_button">Reports button</string>
     <string name="settings">Settings</string>
     <string name="settings_button">Settings button</string>
-    <string name="setting_descrription">Edit Settings</string>
+    <string name="setting_description">Edit Settings</string>
     <string name="Report">Report</string>
+    <string name="choose">Choose File</string>
     <string name="Reports">Reports Description</string>
     <string name="Save">Save</string>
     <string name="fileName">Enter File Name</string>

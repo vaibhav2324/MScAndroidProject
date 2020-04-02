@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
@@ -10,42 +11,41 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:background="@color/pink"
+    android:orientation="horizontal"
+    android:background="@color/deep_pruple"
+    android:gravity="center"
     android:layout_marginBottom="70dp"
     >
     <ImageView
-        android:layout_width="60dp"
-        android:layout_marginLeft="70dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
         android:layout_margin="10dp"
+        android:gravity="left"
         android:src="@drawable/ic_filter_frames_black_24dp"
         />
     <TextView
-        android:layout_marginTop="15dp"
         android:layout_width="235dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="100dp"
         android:text="@string/Report"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        android:layout_marginLeft="50dp"
-
+        android:textSize="30dp"
+        android:layout_marginTop="5dp"
         android:textColor="@color/cardview_light_background"
         />
 </LinearLayout>
 
     <EditText
         android:layout_width="280dp"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:hint="@string/Reports"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:layout_marginBottom="20dp"
         />
     <EditText
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:hint="@string/fileName"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:layout_marginBottom="10dp"
         android:id="@+id/filename"
         />
@@ -80,7 +80,7 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:text="@string/showUploads"
-        android:textSize="22dp"
+        android:textSize="20dp"
         android:id="@+id/show"
 
         />

@@ -21,8 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         color_change = (LinearLayout)findViewById(R.id.color_viewer);
-        Button color_picker = (Button) findViewById(R.id.med_color);
-        color_picker.setOnClickListener(new View.OnClickListener() {
+        color_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openColorPicker();

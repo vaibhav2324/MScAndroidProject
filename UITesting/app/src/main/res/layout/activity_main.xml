@@ -78,34 +78,9 @@
     </RadioGroup>
 
     />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:text="@string/med_image"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="@string/choose"
-        android:id="@+id/choose"
-        />
-
-    </LinearLayout>
-    <ImageView
-        android:src="@drawable/preview"
-    android:layout_width="100dp"
+   <ImageView
+    android:src="@drawable/preview"
+    android:layout_width="250dp"
     android:layout_height="100dp"
     android:layout_marginBottom="10dp"
     android:id="@+id/image"
@@ -139,26 +114,30 @@
         android:layout_height="40dp"
         android:text="@string/instruction_4"
         />
-    <TextView
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:text="@string/med_color"/>
 
-    <Button
+<LinearLayout
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center">
+    <TextView
+        android:gravity="center"
         android:id="@+id/med_color"
+        android:textSize="18sp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:textColor="@color/black"
         android:text="@string/med_color"/>
 
         <LinearLayout
+            android:layout_margin="20dp"
             android:id="@+id/color_viewer"
-            android:layout_width="145dp"
-            android:layout_height="145dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:gravity="center"
+            android:background="@color/green"
             android:orientation="vertical"/>
+    </LinearLayout>
     </LinearLayout>
 </ScrollView>

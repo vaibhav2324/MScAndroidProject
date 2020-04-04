@@ -23,18 +23,19 @@
         android:layout_marginBottom="100dp"
         android:src="@drawable/ic_today_black_24dp"
         />
+
     <TextView
         android:layout_width="235dp"
         android:layout_height="45dp"
         android:layout_margin="10dp"
-        android:layout_marginBottom="100dp"
-        android:text="@string/title"
-        android:textSize="30dp"
-        android:textStyle="bold"
         android:layout_marginLeft="50dp"
-
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/galada"
+        android:text="@string/title"
         android:textColor="@color/cardview_light_background"
-    />
+
+        android:textSize="30dp"
+        android:textStyle="bold" />
 </LinearLayout>
 
     <EditText

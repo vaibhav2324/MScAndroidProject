@@ -12,7 +12,7 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-<LinearLayout
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:background="@color/green"
@@ -25,17 +25,18 @@
         android:layout_height="45dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_local_hospital_black_24dp"/>
-    <TextView
-        android:layout_width="130dp"
-        android:textAlignment="center"
-        android:textSize="30dp"
-        android:textStyle="italic"
-        android:gravity="center"
-        android:layout_marginRight="190dp"
-        android:textColor="@color/white"
-        android:layout_height="55dp"
-        android:text="@string/medicine"
-  />
+
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="55dp"
+            android:layout_marginRight="190dp"
+            android:fontFamily="@font/galada"
+            android:gravity="center"
+            android:text="@string/medicine"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textStyle="italic" />
 </LinearLayout>
 
     <EditText
@@ -94,13 +95,13 @@
         android:text="@string/med_image"
         />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="@string/choose"
-        android:id="@+id/choose"
-        />
+        <Button
+            android:id="@+id/choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-thin"
+            android:text="@string/choose"
+            android:textSize="18sp" />
 
     </LinearLayout>
     <ImageView
@@ -148,11 +149,12 @@
         android:gravity="center"
         android:text="@string/med_color"/>
 
-    <Button
-        android:id="@+id/med_color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/med_color"/>
+        <Button
+            android:id="@+id/med_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-thin"
+            android:text="@string/med_color" />
 
         <LinearLayout
             android:id="@+id/color_viewer"

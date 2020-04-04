@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">eventhandlering</string>
+    <string name="button_id">save</string>
 </resources>

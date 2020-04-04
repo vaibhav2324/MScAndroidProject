@@ -12,7 +12,7 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-<LinearLayout
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:background="@color/green"
@@ -37,24 +37,125 @@
         android:text="@string/medicine"
   />
 </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <EditText
+ <EditText
+
         android:layout_width="250dp"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:hint="@string/med_name"
         android:inputType="text"/>
 
-    <TextView
-        android:text="@string/result"
-        android:textColor="@color/black"
-        android:id="@+id/time_date"
-        android:textSize="18sp"
-        android:layout_marginTop="20dp"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:gravity="center"
+        <TextView
+            android:text="@string/set_time"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_gray"
+        android:layout_margin="10dp"
         />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:foregroundGravity="center">
+
+            <TextView
+                android:textSize="18sp"
+                android:layout_marginEnd="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="@string/dose_1"
+                android:textColor="@color/black"/>
+
+            <Button
+                android:id="@+id/time_1_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="Time" />
+        </LinearLayout>
+
+
+    <Button
+        android:id="@+id/repeat_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_margin="15dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/repeat" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <TextView
+                android:textSize="18sp"
+                android:layout_marginEnd="15"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="@string/dose_2"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/time_2_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="Time" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_gray"
+        android:layout_margin="10dp"
+        />
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="@string/start_date"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="@string/date" />
+        </LinearLayout>
 
 
     <RadioGroup
@@ -86,13 +187,20 @@
     android:id="@+id/image"
 
     />
+
     <TextView
-        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:layout_marginTop="20dp"
         android:text="@string/instructions"
-        android:textSize="18sp"
         android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_gray"
+        android:layout_margin="10dp"
         />
     <CheckBox
         android:layout_width="250dp"
@@ -139,5 +247,6 @@
             android:background="@color/green"
             android:orientation="vertical"/>
     </LinearLayout>
+</LinearLayout>
     </LinearLayout>
 </ScrollView>

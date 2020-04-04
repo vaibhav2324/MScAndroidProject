@@ -28,6 +28,13 @@
     <string name="reports">Reports</string>
     <string name="ongoing_treatment">Onging Treatment</string>
     <string name="no_of_days">Number of Days</string>
+    <string name="set_time">Set Medicine Time</string>
+    <string name="dose_1">Dose 1</string>
+    <string name="dose_2">Dose 2</string>
+    <string name="repeat">Repeat</string>
+    <string name="schedule">Schedule</string>
+    <string name="start_date">Start Date</string>
+    <string name="date">Date</string>
     <string name="report_description">Save your Reports here</string>
     <string name="reports_button">Reports button</string>
     <string name="settings">Settings</string>

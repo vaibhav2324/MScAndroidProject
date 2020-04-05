@@ -33,6 +33,8 @@
     <string name="dose_2">Dose 2</string>
     <string name="repeat">Repeat</string>
     <string name="schedule">Schedule</string>
+    <string name="duration">Duration</string>
+    <string name="med_img_des">Preview of Medicine Image</string>
     <string name="start_date">Start Date</string>
     <string name="date">Date</string>
     <string name="report_description">Save your Reports here</string>

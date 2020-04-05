@@ -23,13 +23,14 @@ public class AppointmentUIActivity extends AppCompatActivity implements
     DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
     Button button;
     TextView tvResult;
+
     int day,month,year,hour,minute;
     int finalDay,finalMonth,finalYear,finalHour,finalMinute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        button = (Button) findViewById(R.id.button);
+        setContentView(R.layout.activity_appointment_u_i);
+        button = (Button)findViewById(R.id.button);
         tvResult = (TextView)findViewById(R.id.tvResult);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +66,6 @@ public class AppointmentUIActivity extends AppCompatActivity implements
         finalMinute = i1;
 
 
-        tvResult.setText(" year"+finalYear+" / month"+finalMonth+" / day :"+finalDay+"\n"+"hour : "+finalHour+" minutes : "+finalMinute);
+        tvResult.setText(finalDay+"-"+finalMonth+"-"+finalYear+" "+" Time "+finalHour+":"+finalMinute);
     }
 }

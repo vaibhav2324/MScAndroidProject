@@ -55,45 +55,48 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:foregroundGravity="center"
-                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:gravity="start"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/dose" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/dose1" />
 
                 <TextView
                     android:id="@+id/time_1_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:textColor="@color/black"
+                    android:fontFamily="@font/caudex_italic"
                     android:text="@string/dose"
-                    android:textSize="18sp"/>
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
-
-                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="start"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/calander"/>
+                    android:layout_margin="10dp"
+                    android:src="@drawable/calender"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_margin="10dp"
                     android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/caudex_italic"
                     android:gravity="center"
                     android:text="@string/start_date"
                     android:textColor="@color/black"
@@ -101,40 +104,31 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/caudex_bold_italic"
-                android:text="@string/instructions"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <View
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="10dp"
-                android:background="@color/light_gray" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center">
+                <ImageView
+                    android:id="@+id/instructions1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_playlist_add_check_black_24dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginLeft="10dp"
+                    />
 
-            <CheckBox
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:text="@string/instruction_1" />
-
-            <CheckBox
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:text="@string/instruction_2" />
-
-            <CheckBox
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:text="@string/instruction_3" />
-
-            <CheckBox
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:text="@string/instruction_4" />
+                <TextView
+                    android:id="@+id/instructions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/caudex_italic"
+                    android:text="@string/select"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
             <RadioGroup
                 android:layout_width="250dp"

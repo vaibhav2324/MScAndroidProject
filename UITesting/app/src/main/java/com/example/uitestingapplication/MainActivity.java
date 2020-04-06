@@ -1,11 +1,13 @@
 package com.example.uitestingapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -13,12 +15,21 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 
 
 public class MainActivity extends AppCompatActivity {
-    LinearLayout color_change;
+    private TextView textView;
+    private LinearLayout color_change;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        textView = (TextView) findViewById(R.id.instructions) ;
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
 
         color_change = (LinearLayout)findViewById(R.id.color_viewer);
         color_change.setOnClickListener(new View.OnClickListener() {
@@ -27,7 +38,12 @@ public class MainActivity extends AppCompatActivity {
                 openColorPicker();
             }
         });
-    }
+        }
+
+        public void openDialog(){
+            InstructionDialog dialogFragment = new InstructionDialog();
+            dialogFragment.show(getSupportFragmentManager(),"Instruction Dialog Box");
+        }
 
         public void openColorPicker(){
         final ColorPicker colorPicker = new ColorPicker(this);
@@ -58,9 +74,9 @@ public class MainActivity extends AppCompatActivity {
                         public void onCancel() {
 
                         }
-                    }).show();
-            }
-
-
+            }).show();
         }
+
+
+    }
 

@@ -74,8 +74,8 @@ public class ReportUIActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null){
-        mImageUri = data.getData();
-        mImage.setImageURI(mImageUri);
+            mImageUri = data.getData();
+            mImage.setImageURI(mImageUri);
+        }
     }
-}
 }

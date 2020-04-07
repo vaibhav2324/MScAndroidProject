@@ -22,8 +22,8 @@ import java.util.Date;
 
 public class AppointmentUIActivity extends AppCompatActivity implements
     DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
-    ImageButton button;
-    TextView tvResult;
+    private ImageButton button;
+    private TextView tvResult;
 
     int day,month,year,hour,minute;
     int finalDay,finalMonth,finalYear,finalHour,finalMinute;

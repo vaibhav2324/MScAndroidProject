@@ -45,15 +45,17 @@
             android:gravity="center"
             android:orientation="vertical">
 
+
             <EditText
 
                 android:layout_width="250dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/caudex_italic"
                 android:hint="@string/med_name"
+                android:textSize="18sp"
                 android:inputType="text" />
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -65,33 +67,10 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="10dp"
-                    android:src="@drawable/dose1" />
+                    android:src="@drawable/date_time_new" />
 
                 <TextView
-                    android:id="@+id/time_1_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/caudex_italic"
-                    android:text="@string/dose"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/calender"/>
-
-                <TextView
+                    android:id="@+id/date_time"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_margin="10dp"
@@ -107,17 +86,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:layout_gravity="center">
+                android:orientation="horizontal">
+
                 <ImageView
                     android:id="@+id/instructions1"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_playlist_add_check_black_24dp"
                     android:layout_margin="10dp"
                     android:layout_marginLeft="10dp"
-                    />
+                    android:src="@drawable/ic_playlist_add_check_black_24dp" />
 
                 <TextView
                     android:id="@+id/instructions"
@@ -130,43 +109,81 @@
                     android:textSize="20sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/duration_main" />
+
+
             <RadioGroup
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="@font/caudex_bold_italic"
-                    android:gravity="center"
-                    android:text="@string/duration"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="10dp"
-                    android:background="@color/light_gray" />
 
                 <RadioButton
                     android:id="@+id/ongoing_treatment"
                     android:layout_width="250dp"
                     android:layout_height="45dp"
+                    android:fontFamily="@font/caudex_italic"
                     android:text="@string/ongoing_treatment" />
 
                 <RadioButton
                     android:id="@+id/no_of_days"
                     android:layout_width="250dp"
                     android:layout_height="45dp"
+                    android:fontFamily="@font/caudex_italic"
                     android:text="@string/no_of_days" />
 
 
             </RadioGroup>
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="start">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/med_img_des"
+                    android:src="@drawable/add_image" />
+
+                <EditText
+                    android:id="@+id/filename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/caudex_italic"
+                    android:hint="@string/fileName"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/choose"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/med_img_des"
+                    android:src="@drawable/choose" />
+
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/image"
@@ -175,11 +192,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:contentDescription="@string/med_img_des"
-                android:src="@drawable/preview"
-
-                />
-
-
+                android:src="@drawable/preview" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -206,8 +219,8 @@
                     android:background="@color/green"
                     android:gravity="center"
                     android:orientation="vertical" />
-                    </LinearLayout>
+            </LinearLayout>
 
-                </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

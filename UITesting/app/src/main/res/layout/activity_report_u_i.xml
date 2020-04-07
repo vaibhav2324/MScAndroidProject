@@ -3,19 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="start"
     android:orientation="vertical"
     tools:context=".ReportUIActivity">
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="60dp"
     android:orientation="horizontal"
     android:background="@color/deep_pruple"
-    android:gravity="center"
-    android:layout_marginBottom="70dp"
-    >
+    android:gravity="start"
+    android:layout_marginBottom="70dp">
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -25,20 +23,28 @@
         android:src="@drawable/ic_filter_frames_black_24dp"
         />
     <TextView
-        android:layout_width="235dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:gravity="center"
         android:text="@string/Report"
         android:textSize="30dp"
+        android:fontFamily="@font/caudex_bold_italic"
         android:layout_marginTop="5dp"
         android:textColor="@color/cardview_light_background"
         />
 </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
 
     <EditText
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:hint="@string/Reports"
         android:textSize="20dp"
+        android:fontFamily="@font/caudex_italic"
         android:layout_marginBottom="20dp"
         />
     <EditText
@@ -46,6 +52,7 @@
         android:layout_height="50dp"
         android:hint="@string/fileName"
         android:textSize="20dp"
+        android:fontFamily="@font/caudex_italic"
         android:layout_marginBottom="10dp"
         android:id="@+id/filename"
         />
@@ -55,6 +62,7 @@
         android:textSize="20dp"
         android:text="@string/choose"
         android:id="@+id/choose"
+        android:fontFamily="@font/caudex_bold_italic"
         android:layout_marginBottom="10dp"
         />
     <ImageView
@@ -73,6 +81,7 @@
             android:layout_height="50dp"
             android:textSize="20dp"
             android:text="@string/upload"
+            android:fontFamily="@font/caudex_bold_italic"
             android:id="@+id/upload"
             />
     <TextView
@@ -80,6 +89,7 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:text="@string/showUploads"
+        android:fontFamily="@font/caudex_italic"
         android:textSize="20dp"
         android:id="@+id/show"
 
@@ -91,7 +101,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
+        android:fontFamily="@font/caudex_bold_italic"
         android:text="@string/Save"
 
         />
+    </LinearLayout>
 </LinearLayout>

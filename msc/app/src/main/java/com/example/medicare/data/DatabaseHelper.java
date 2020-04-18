@@ -55,10 +55,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return res;
 
-        public long addMedicine(String medicine_name, String medicine_color){
-            SQLiteDatabase db=getWritableDatabase();
-            ContentValues contentValues1=new ContentValues();
-            }
+//        public long addMedicine(String medicine_name, String medicine_color){
+//            SQLiteDatabase db=getWritableDatabase();
+//            ContentValues contentValues1=new ContentValues();
+//            }
 
 
     }

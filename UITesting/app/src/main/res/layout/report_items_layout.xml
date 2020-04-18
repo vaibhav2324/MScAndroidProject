@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/itemView">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/background"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/set_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:id="@+id/filename"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="vaibhav"
+                android:gravity="center"
+                android:layout_margin="3dp"
+                 />
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:layout_margin="3dp"
+                android:text="vaibhav"
+               />
+
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:text="Delete"
+                android:textSize="12sp"
+                android:layout_margin="3dp"/>
+
+        </TableRow>
+    </TableLayout>
+</androidx.cardview.widget.CardView>
+</ScrollView>

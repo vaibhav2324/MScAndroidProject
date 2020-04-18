@@ -22,4 +22,12 @@ public class Registration {
     private  String mobile;
     private int age;
     private  String gender;
+
+    public Registration(String email, String password, String mobile, int age, String gender) {
+        this.email = email;
+        this.password = password;
+        this.mobile = mobile;
+        this.age = age;
+        this.gender = gender;
+    }
 }

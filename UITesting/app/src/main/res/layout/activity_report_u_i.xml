@@ -12,8 +12,7 @@
     android:layout_height="60dp"
     android:orientation="horizontal"
     android:background="@color/deep_pruple"
-    android:gravity="start"
-    android:layout_marginBottom="70dp">
+    android:gravity="start">
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -34,12 +33,14 @@
         />
 </LinearLayout>
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="start"
         android:orientation="vertical">
 
     <EditText
+        android:id="@+id/description"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:hint="@string/Reports"
@@ -56,54 +57,57 @@
         android:layout_marginBottom="10dp"
         android:id="@+id/filename"
         />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="@string/choose"
-        android:id="@+id/choose"
-        android:fontFamily="@font/caudex_bold_italic"
-        android:layout_marginBottom="10dp"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/choose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/caudex_bold_italic"
+                android:text="@string/choose"
+                android:textSize="20dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:hint="Camera"
+                android:id="@+id/camera"
+                android:fontFamily="@font/caudex_bold_italic"
+                android:layout_marginBottom="10dp"
+                />
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="10dp"
         android:id="@+id/image"
-
-        />
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp">
-        <Button
-            android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:textSize="20dp"
-            android:text="@string/upload"
-            android:fontFamily="@font/caudex_bold_italic"
-            android:id="@+id/upload"
-            />
-    <TextView
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="@string/showUploads"
-        android:fontFamily="@font/caudex_italic"
-        android:textSize="20dp"
-        android:id="@+id/show"
-
         />
 
-</LinearLayout>
+        </LinearLayout>
 
+    </LinearLayout>
     <Button
+        android:id="@+id/save_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
+        android:layout_marginStart="150dp"
         android:fontFamily="@font/caudex_bold_italic"
         android:text="@string/Save"
-
         />
-    </LinearLayout>
+    <Button
+        android:id="@+id/showReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginStart="150dp"
+        android:fontFamily="@font/caudex_bold_italic"
+        android:text="@string/show"
+        />
+
 </LinearLayout>

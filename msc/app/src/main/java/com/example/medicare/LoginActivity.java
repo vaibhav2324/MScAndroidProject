@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 //        });
 
     }
-String user;
+    String user;
     String pwd;
     public void loginchecking(View view) {
         user = textUsername.getText().toString().trim();

@@ -47,9 +47,26 @@
     <string name="choose">Choose File</string>
     <string name="Reports">Reports Description</string>
     <string name="Save">Save</string>
+    <string name="show">Show Report</string>
     <string name="fileName">Enter File Name</string>
     <string name="upload">Upload</string>
     <string name="showUploads">Show Uploads</string>
     <string name="savedReports">Saved All Reports</string>
 
+
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="username">E-mail</string>
+    <string name="mobile">Mobile No.</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="others">Others</string>
+    <string name="password">Password</string>
+    <string name="not_registered">Not Registered ? </string>
+    <string name="register"> REGISTER </string>
+    <string name="login">"LOGIN"</string>
+    <string name="already_login">Already Registered ?</string>
+
+    <string name="card_report_description">Desciption</string>
+    <string name="card_report_filename">Filename</string>
 </resources>

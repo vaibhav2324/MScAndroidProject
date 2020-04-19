@@ -19,7 +19,7 @@ public abstract class MedicareAppDatabase extends RoomDatabase {
     public  abstract RegistrationRepo getRegistrationRepo();
     public abstract ReportRepo getReportRepo();
 
-    static MedicareAppDatabase getDatabase(final Context context){
+    public static MedicareAppDatabase getDatabase(final Context context){
         if (database==null){
             synchronized (MedicareAppDatabase.class){
                 if (database == null){

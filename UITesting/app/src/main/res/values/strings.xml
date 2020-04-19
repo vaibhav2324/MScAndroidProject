@@ -52,7 +52,7 @@
     <string name="upload">Upload</string>
     <string name="showUploads">Show Uploads</string>
     <string name="savedReports">Saved All Reports</string>
-
+    <string name="no_report">No Report</string>
 
     <string name="name">Name</string>
     <string name="age">Age</string>
@@ -69,4 +69,5 @@
 
     <string name="card_report_description">Desciption</string>
     <string name="card_report_filename">Filename</string>
+    <string name="appbar_scrolling_view_behavior" />
 </resources>

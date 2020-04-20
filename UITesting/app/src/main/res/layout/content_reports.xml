@@ -12,4 +12,5 @@
     android:id="@+id/recyclerview"
     tools:listitem="@layout/report_items_layout">
 
+
 </androidx.recyclerview.widget.RecyclerView>

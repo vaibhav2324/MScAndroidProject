@@ -15,10 +15,13 @@ import java.util.List;
 public interface ReportRepo {
   @Insert
     void insertReport(Report report);
+
     @Update
     void updateReport(Report report);
+
     @Delete
     int deleteReport(Report report);
+
     @Query("select * from reports")
     LiveData<List<Report>> getAllReports();
 

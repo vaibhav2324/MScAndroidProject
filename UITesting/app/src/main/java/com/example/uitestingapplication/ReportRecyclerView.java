@@ -33,9 +33,8 @@ public class ReportRecyclerView extends RecyclerView.Adapter<ReportRecyclerView.
     private OnDeleteClickListener onDeleteClickListener;
 
     public ReportRecyclerView(Context context, OnDeleteClickListener listener){
-
-        layoutInflater = LayoutInflater.from(context);
         mContext = context;
+        layoutInflater = LayoutInflater.from(context);
         this.onDeleteClickListener = listener;
     }
 
@@ -63,15 +62,16 @@ public class ReportRecyclerView extends RecyclerView.Adapter<ReportRecyclerView.
         }
     }
 
-    public void deleteReport(Report report)
-    {
-        reportList.remove(report);
-    }
     @Override
     public int getItemCount() {
         if (reportList != null)
             return reportList.size();
         else return 0;
+    }
+
+    public void setReport(List<Report> reports){
+        reportList = reports;
+        notifyDataSetChanged();
     }
 
     public class ReportViewHolder extends RecyclerView.ViewHolder{

@@ -18,14 +18,18 @@ public class ReportViewModel extends AndroidViewModel {
     private String TAG = this.getClass().getSimpleName();
     private ReportRepo reportRepo;
     private MedicareAppDatabase db;
+    LiveData<List<Report>> mAllNotes;
 
     public ReportViewModel(@NonNull Application application) {
         super(application);
         db = MedicareAppDatabase.getDatabase(application);
         reportRepo = db.getReportRepo();
-        LiveData<List<Report>> mAllNotes = reportRepo.getAllReports();
+        mAllNotes = reportRepo.getAllReports();
     }
 
+    public LiveData<List<Report>> getReports(){
+        return mAllNotes;
+    }
     public void delete(Report report) {
         new DeleteAsyncTask(reportRepo).execute(report);
     }

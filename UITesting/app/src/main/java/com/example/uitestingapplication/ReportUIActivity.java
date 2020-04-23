@@ -32,13 +32,13 @@ public class ReportUIActivity extends AppCompatActivity {
     private static final int CAMERA_INTENT = 51;
 
     private Bitmap bitmap;
-    private Button mBtnChoose;
-    private Button image;
+    private ImageView mBtnChoose;
+    private ImageView image;
     private EditText metFileName,reportDescription;
     private ImageView mImage;
     private Uri mImageUri;
-    private Button save;
-    private Button show;
+    private ImageView save;
+    private ImageView show;
     private MedicareAppDatabase db;
 
 
@@ -49,13 +49,13 @@ public class ReportUIActivity extends AppCompatActivity {
 
         db = Room.databaseBuilder(getApplicationContext(),MedicareAppDatabase.class,"medicareDB").allowMainThreadQueries().build();
 
-        mBtnChoose = (Button) findViewById(R.id.choose);
-        image = (Button)findViewById(R.id.camera);
-        metFileName = (EditText) findViewById(R.id.filename);
-        reportDescription = (EditText)findViewById(R.id.description);
-        mImage = (ImageView)findViewById(R.id.image);
-        save = (Button)findViewById(R.id.save_report);
-        show= (Button)findViewById(R.id.showReport);
+        mBtnChoose =  findViewById(R.id.choose);
+        image = findViewById(R.id.camera);
+        metFileName =  findViewById(R.id.filename);
+        reportDescription = findViewById(R.id.description);
+        mImage = findViewById(R.id.image);
+        save =  findViewById(R.id.save_report);
+        show=  findViewById(R.id.showReport);
         bitmap = null;
 
         show.setOnClickListener(new View.OnClickListener() {

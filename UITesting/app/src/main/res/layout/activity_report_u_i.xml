@@ -36,7 +36,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="start"
+        android:gravity="center"
         android:orientation="vertical">
 
     <EditText
@@ -60,27 +60,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="start"
+            android:gravity="center"
             android:orientation="horizontal">
-
-            <Button
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="20sp">
+            <ImageView
                 android:id="@+id/choose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/caudex_bold_italic"
-                android:text="@string/choose"
-                android:textSize="20dp" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:hint="Camera"
-                android:id="@+id/camera"
-                android:fontFamily="@font/caudex_bold_italic"
+                android:src="@drawable/browseReport"
                 android:layout_marginBottom="10dp"
                 />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/camera"
+                android:src="@drawable/camera"
+                android:layout_marginBottom="10dp"
+                />
+</LinearLayout>
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -91,23 +94,23 @@
         </LinearLayout>
 
     </LinearLayout>
-    <Button
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+    <ImageView
         android:id="@+id/save_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginStart="150dp"
-        android:fontFamily="@font/caudex_bold_italic"
-        android:text="@string/Save"
+        android:src="@drawable/save"
+        android:layout_marginEnd="50dp"
         />
-    <Button
+    <ImageView
         android:id="@+id/showReport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginStart="150dp"
-        android:fontFamily="@font/caudex_bold_italic"
-        android:text="@string/show"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/show"
         />
-
+    </LinearLayout>
 </LinearLayout>

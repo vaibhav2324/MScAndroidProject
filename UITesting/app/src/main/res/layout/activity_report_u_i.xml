@@ -31,6 +31,13 @@
         android:layout_marginTop="5dp"
         android:textColor="@color/cardview_light_background"
         />
+    <ImageView
+        android:id="@+id/showReport"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="100dp"
+        android:src="@drawable/show_report"/>
 </LinearLayout>
     <LinearLayout
         android:layout_marginTop="20dp"
@@ -72,17 +79,16 @@
                 android:id="@+id/choose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/browseReport"
+                android:src="@drawable/browse_folder"
                 android:layout_marginBottom="10dp"
                 />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/camera"
-                android:src="@drawable/camera"
-                android:layout_marginBottom="10dp"
-                />
+    <ImageView
+        android:id="@+id/camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/camera" />
 </LinearLayout>
     <ImageView
         android:layout_width="100dp"
@@ -99,18 +105,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center">
-    <ImageView
+    <Button
         android:id="@+id/save_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/save"
-        android:layout_marginEnd="50dp"
+        android:text="@string/Save"
         />
-    <ImageView
-        android:id="@+id/showReport"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/show"
-        />
+
     </LinearLayout>
 </LinearLayout>

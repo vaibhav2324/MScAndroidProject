@@ -1,12 +1,8 @@
 package com.example.uitestingapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -15,8 +11,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.uitestingapplication.db.MedicareAppDatabase;
+import com.example.uitestingapplication.db.entity.Medicine;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,16 +32,14 @@ public class MainActivity extends AppCompatActivity implements
 
     private static final int PICK_IMAGE = 1;
 
-    private ImageView mBtnChoose;
-    private Button mBtnUpload;
-    private TextView mtvShow;
-    private EditText metFileName;
+    Medicine medicine;
+
+    private RadioButton ongoingTreatment, noOfDays;
+    private EditText medName,metFileName;
     private ImageView mImage;
-
-    private Uri mImageUri;
-
     private TextView textView;
     private LinearLayout color_change;
+    private MedicareAppDatabase db;
 
     int day,month,year,hour,minute;
     int finalDay,finalMonth,finalYear,finalHour,finalMinute;
@@ -48,13 +49,13 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mBtnChoose = (ImageView) findViewById(R.id.choose);
-        mBtnChoose = findViewById(R.id.choose);
+        medName = findViewById(R.id.med_name);
 
-        metFileName = (EditText) findViewById(R.id.filename);
+        ongoingTreatment = findViewById(R.id.ongoing_treatment);
+        noOfDays = findViewById(R.id.no_of_days);
+
+        ImageView mBtnChoose = findViewById(R.id.choose);
         metFileName = findViewById(R.id.filename);
-
-        mImage = (ImageView) findViewById(R.id.image);
         mImage = findViewById(R.id.image);
 
         mBtnChoose.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
-        textView = (TextView) findViewById(R.id.instructions) ;
+        textView = findViewById(R.id.instructions);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
-        textView = (TextView) findViewById(R.id.date_time);
+        textView = findViewById(R.id.date_time);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,9 +99,15 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
+        Button saveMedicine = findViewById(R.id.save_medicines);
+        saveMedicine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               saveMedicineData();
+            }
+        });
 
-
-        color_change = (LinearLayout)findViewById(R.id.color_viewer);
+        color_change = findViewById(R.id.color_viewer);
         color_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,8 +141,6 @@ public class MainActivity extends AppCompatActivity implements
     public void onTimeSet(TimePicker timePicker, int i, int i1) {
         finalHour = i;
         finalMinute = i1;
-
-
         textView.setText(finalDay+"-"+finalMonth+"-"+finalYear+" "+" Time "+finalHour+":"+finalMinute);
     }
 
@@ -143,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null){
-            mImageUri = data.getData();
+            Uri mImageUri = data.getData();
             mImage.setImageURI(mImageUri);
         }
     }
@@ -185,6 +190,24 @@ public class MainActivity extends AppCompatActivity implements
             }).show();
         }
 
+        public void saveMedicineData(){
+
+            medicine.setMedicineName(medName.getText().toString());
+   //       medicine.setDate(textView.getText().toString());
+            String onGoingTreatment = ongoingTreatment.getText().toString();
+            String numberOfDays = noOfDays.getText().toString();
+            medicine.setFileName(metFileName.getText().toString());
+            medicine.setMedicineImage(ImageConverter.convertImageToByteArray(mImage));
+            db.getMedicineRepo().insertMedicine(medicine);
+            Toast.makeText(this,"Data Added Successfully",Toast.LENGTH_SHORT).show();
+
+            if(ongoingTreatment.isChecked()){
+                medicine.setTreatmentPeriod(onGoingTreatment);
+            }
+            else{
+                medicine.setTreatmentPeriod(numberOfDays);
+            }
+        }
 
     }
 

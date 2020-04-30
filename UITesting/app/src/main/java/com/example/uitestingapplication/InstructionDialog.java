@@ -12,11 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.uitestingapplication.db.entity.Medicine;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class InstructionDialog extends DialogFragment {
 
+    Medicine medicine;
     private List<String> selectedItems;
     @NonNull
     @Override
@@ -41,12 +44,13 @@ public class InstructionDialog extends DialogFragment {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String final_selecion = "";
+                String final_selection = "";
                 for (String Item : selectedItems)
                 {
-                    final_selecion = final_selecion+"\n"+Item;
+                    final_selection = final_selection+Item+"\n";
                 }
-                Toast.makeText(getActivity(),final_selecion,Toast.LENGTH_SHORT).show();
+                medicine.setInstruction(selectedItems);
+                Toast.makeText(getActivity(),final_selection,Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -33,14 +33,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SplashScreen"
+            android:theme="@style/SplashTheme">
+        <intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".ReportUIActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".DashboardUIActivity" android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+            android:name=".DashboardUIActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -52,6 +58,7 @@
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

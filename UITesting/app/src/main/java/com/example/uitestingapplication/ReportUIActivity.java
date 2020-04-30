@@ -37,7 +37,7 @@ public class ReportUIActivity extends AppCompatActivity {
     private EditText metFileName,reportDescription;
     private ImageView mImage;
     private Uri mImageUri;
-    private ImageView save;
+    private Button save;
     private ImageView show;
     private MedicareAppDatabase db;
 
@@ -131,6 +131,7 @@ public class ReportUIActivity extends AppCompatActivity {
                 }
                 else{
                     mImage.setImageBitmap(bitmap);
+                    Toast.makeText(this,"Image picked Successfully",Toast.LENGTH_SHORT).show();
                 }
             }
             else{
@@ -147,7 +148,6 @@ public class ReportUIActivity extends AppCompatActivity {
 
     public void saveReport(View view){
 
-
         if(mImage==null||metFileName.getText().toString().isEmpty()||reportDescription.getText().toString().isEmpty()){
             Toast.makeText(this,"Data is missing",Toast.LENGTH_SHORT).show();
         }
@@ -155,28 +155,12 @@ public class ReportUIActivity extends AppCompatActivity {
             Report report = new Report();
             report.setDescription(reportDescription.getText().toString());
             report.setFileName(metFileName.getText().toString());
-            report.setImage(convertImageToByteArray(mImage));
+            report.setImage(ImageConverter.convertImageToByteArray(mImage));
             db.getReportRepo().insertReport(report);
             Toast.makeText(this,"Data Added Successfully",Toast.LENGTH_SHORT).show();
             Intent showReports = new Intent(ReportUIActivity.this,ShowReportActivity.class);
             startActivity(showReports);
         }
-    }
-
-    public static byte[] convertImageToByteArray(Bitmap bitmap){
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,0,stream);
-        return stream.toByteArray();
-    }
-    public static byte[] convertImageToByteArray(ImageView imageView){
-        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,0,stream);
-        return stream.toByteArray();
-    }
-
-    public static Bitmap convertByteArrayToImage(byte[] array){
-        return BitmapFactory.decodeByteArray(array,0,array.length);
     }
 
     public void showReports(View view)

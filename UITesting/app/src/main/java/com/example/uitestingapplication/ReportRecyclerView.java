@@ -93,7 +93,7 @@ public class ReportRecyclerView extends RecyclerView.Adapter<ReportRecyclerView.
             mPosition = position;
             report_filename.setText(report.getFileName());
             report_description.setText(report.getDescription());
-            image.setImageBitmap(ReportUIActivity.convertByteArrayToImage(report.getImage()));
+            image.setImageBitmap(ImageConverter.convertByteArrayToImage(report.getImage()));
         }
 
         public void setListeners() {

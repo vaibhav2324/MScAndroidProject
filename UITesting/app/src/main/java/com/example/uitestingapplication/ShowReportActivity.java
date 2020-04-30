@@ -27,6 +27,7 @@ public class ShowReportActivity extends AppCompatActivity implements ReportRecyc
     ReportRecyclerView reportRecyclerView;
     ReportViewModel reportViewModel;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

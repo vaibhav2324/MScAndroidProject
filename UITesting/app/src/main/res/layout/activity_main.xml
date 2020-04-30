@@ -47,7 +47,7 @@
 
 
             <EditText
-
+                android:id="@+id/med_name"
                 android:layout_width="250dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="20dp"
@@ -222,5 +222,11 @@
             </LinearLayout>
 
         </LinearLayout>
+        <Button
+            android:id="@+id/save_medicines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Save"
+            android:fontFamily="@font/caudex_bold_italic"/>
     </LinearLayout>
 </ScrollView>

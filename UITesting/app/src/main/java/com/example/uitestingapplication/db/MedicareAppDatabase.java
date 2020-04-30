@@ -8,6 +8,7 @@ import androidx.room.RoomDatabase;
 
 import com.example.uitestingapplication.db.entity.Registration;
 import com.example.uitestingapplication.db.entity.Report;
+import com.example.uitestingapplication.db.repo.MedicineRepo;
 import com.example.uitestingapplication.db.repo.RegistrationRepo;
 import com.example.uitestingapplication.db.repo.ReportRepo;
 
@@ -17,6 +18,7 @@ public abstract class MedicareAppDatabase extends RoomDatabase {
     public static volatile MedicareAppDatabase database;
 
     public  abstract RegistrationRepo getRegistrationRepo();
+    public abstract MedicineRepo getMedicineRepo();
     public abstract ReportRepo getReportRepo();
 
     public static MedicareAppDatabase getDatabase(final Context context){

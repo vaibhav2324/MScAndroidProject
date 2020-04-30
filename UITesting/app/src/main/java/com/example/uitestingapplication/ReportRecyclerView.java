@@ -1,9 +1,6 @@
 package com.example.uitestingapplication;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
-import com.example.uitestingapplication.R;
-import com.example.uitestingapplication.ReportUIActivity;
-import com.example.uitestingapplication.db.MedicareAppDatabase;
 import com.example.uitestingapplication.db.entity.Report;
 
 import java.util.List;

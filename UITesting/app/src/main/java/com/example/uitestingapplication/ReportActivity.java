@@ -3,12 +3,9 @@ package com.example.uitestingapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -16,18 +13,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.uitestingapplication.db.MedicareAppDatabase;
 import com.example.uitestingapplication.db.MedicareAppDatabase_Impl;
 import com.example.uitestingapplication.db.entity.Report;
-import com.example.uitestingapplication.db.repo.RegistrationRepo;
-import com.example.uitestingapplication.db.repo.ReportRepo;
 
-import java.io.ByteArrayOutputStream;
-
-public class ReportUIActivity extends AppCompatActivity {
+public class ReportActivity extends AppCompatActivity {
     private static final int PICK_IMAGE = 1;
     private static final int CAMERA_INTENT = 51;
 
@@ -158,14 +150,14 @@ public class ReportUIActivity extends AppCompatActivity {
             report.setImage(ImageConverter.convertImageToByteArray(mImage));
             db.getReportRepo().insertReport(report);
             Toast.makeText(this,"Data Added Successfully",Toast.LENGTH_SHORT).show();
-            Intent showReports = new Intent(ReportUIActivity.this,ShowReportActivity.class);
+            Intent showReports = new Intent(ReportActivity.this,ShowReportActivity.class);
             startActivity(showReports);
         }
     }
 
     public void showReports(View view)
     {
-        Intent intent = new Intent(ReportUIActivity.this,ShowReportActivity.class);
+        Intent intent = new Intent(ReportActivity.this,ShowReportActivity.class);
         startActivity(intent);
     }
 }

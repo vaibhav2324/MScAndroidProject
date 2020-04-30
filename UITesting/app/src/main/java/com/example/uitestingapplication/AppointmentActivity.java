@@ -3,26 +3,30 @@ package com.example.uitestingapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageButton;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import com.example.uitestingapplication.db.MedicareAppDatabase;
+import com.example.uitestingapplication.db.entity.Appointment;
+import com.example.uitestingapplication.db.repo.AppointmentRepo;
 
 import java.util.Calendar;
-import java.util.Date;
 
-public class AppointmentUIActivity extends AppCompatActivity implements
+public class AppointmentActivity extends AppCompatActivity implements
     DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
-    private ImageButton button;
+    private Appointment appointment;
+    private MedicareAppDatabase db;
+    private AppointmentRepo appointmentRepo;
+
+    private EditText appointmentTitle, doctorName;
+    private ImageView save;
     private TextView tvResult;
 
     int day,month,year,hour,minute;
@@ -31,7 +35,9 @@ public class AppointmentUIActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment_u_i);
-        tvResult = (TextView)findViewById(R.id.tvResult);
+        appointmentTitle = findViewById(R.id.appointment_title);
+        doctorName = findViewById(R.id.doctor_name);
+        tvResult = findViewById(R.id.tvResult);
 
         tvResult.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,9 +47,17 @@ public class AppointmentUIActivity extends AppCompatActivity implements
             month = cal.get(Calendar.MONTH);
             day = cal.get(Calendar.DAY_OF_MONTH);
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(AppointmentUIActivity.this, AppointmentUIActivity.this, year, month, day );
+            DatePickerDialog datePickerDialog = new DatePickerDialog(AppointmentActivity.this, AppointmentActivity.this, year, month, day );
             datePickerDialog.show();
 
+            }
+        });
+
+        save = findViewById(R.id.save_appointment);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveAppointment();
             }
         });
     }
@@ -56,7 +70,7 @@ public class AppointmentUIActivity extends AppCompatActivity implements
         Calendar calendar = Calendar.getInstance();
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         minute = calendar.get(Calendar.MINUTE);
-        TimePickerDialog timePickerDialog = new TimePickerDialog((AppointmentUIActivity.this), AppointmentUIActivity.this, hour,minute,false);
+        TimePickerDialog timePickerDialog = new TimePickerDialog((AppointmentActivity.this), AppointmentActivity.this, hour,minute,false);
         timePickerDialog.show();
     }
 
@@ -64,8 +78,15 @@ public class AppointmentUIActivity extends AppCompatActivity implements
     public void onTimeSet(TimePicker timePicker, int i, int i1) {
         finalHour = i;
         finalMinute = i1;
-
-
         tvResult.setText(finalDay+"-"+finalMonth+"-"+finalYear+" "+" Time "+finalHour+":"+finalMinute);
+    }
+
+    public void saveAppointment()
+    {
+        appointment.setAppointmentTitle(appointmentTitle.getText().toString());
+        appointment.setDoctorName(doctorName.getText().toString());
+        appointment.setDateAndTime(Integer.toString(finalDay+finalMonth+finalYear+finalHour+finalMinute));
+        db.getAppointmentRepo().insertAppointment(appointment);
+        Toast.makeText(this,"Appointment set Successfully",Toast.LENGTH_SHORT).show();
     }
 }

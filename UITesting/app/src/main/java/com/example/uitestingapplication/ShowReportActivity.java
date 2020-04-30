@@ -2,11 +2,9 @@ package com.example.uitestingapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +13,6 @@ import android.widget.ImageView;
 
 import com.example.uitestingapplication.db.MedicareAppDatabase;
 import com.example.uitestingapplication.db.entity.Report;
-import com.example.uitestingapplication.db.repo.ReportRepo;
 import com.example.uitestingapplication.db.service.ReportViewModel;
 
 import java.util.List;
@@ -49,7 +46,7 @@ public class ShowReportActivity extends AppCompatActivity implements ReportRecyc
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ShowReportActivity.this, ReportUIActivity.class);
+                Intent intent = new Intent(ShowReportActivity.this, ReportActivity.class);
                 startActivity(intent);
             }
         });

@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(retrievedList.size()>0)
                 {
                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    Intent moveToDashboard = new Intent(LoginActivity.this,DashboardUIActivity.class);
+                    Intent moveToDashboard = new Intent(LoginActivity.this, DashboardActivity.class);
                     startActivity(moveToDashboard);
                 }
                 else

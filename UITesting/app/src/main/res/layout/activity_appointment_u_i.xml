@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppointmentUIActivity"
+    tools:context=".AppointmentActivity"
     android:gravity="top"
     android:orientation="vertical">
 <LinearLayout
@@ -49,6 +49,7 @@
             android:src="@drawable/ic_event_note_black_24dp"
             android:layout_margin="15dp"/>
         <EditText
+            android:id="@+id/appointment_title"
         android:hint="@string/appointment_title"
             android:textSize="15sp"
         android:layout_marginTop="20dp"
@@ -67,6 +68,7 @@
         android:layout_height="40dp"
         android:src="@drawable/ic_person_black_24dp"/>
     <EditText
+        android:id="@+id/doctor_name"
         android:hint="@string/doctor_name"
         android:textSize="15sp"
 
@@ -107,7 +109,8 @@
             />
     </LinearLayout>
 
-    <ImageButton
+    <ImageView
+        android:id="@+id/save_appointment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

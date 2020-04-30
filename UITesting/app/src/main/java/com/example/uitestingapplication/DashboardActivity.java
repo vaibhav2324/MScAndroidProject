@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class DashboardUIActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity {
 
     CardView medicine,appointment,users,reports,settings;
 
@@ -20,7 +20,7 @@ public class DashboardUIActivity extends AppCompatActivity {
         medicine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(DashboardUIActivity.this,MainActivity.class);
+                Intent intent1 = new Intent(DashboardActivity.this,MainActivity.class);
                 startActivity(intent1);
             }
         });
@@ -29,7 +29,7 @@ public class DashboardUIActivity extends AppCompatActivity {
         appointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(DashboardUIActivity.this,AppointmentUIActivity.class);
+                Intent intent2 = new Intent(DashboardActivity.this, AppointmentActivity.class);
                 startActivity(intent2);
 
             }
@@ -39,7 +39,7 @@ public class DashboardUIActivity extends AppCompatActivity {
         reports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent3 = new Intent(DashboardUIActivity.this,ReportUIActivity.class);
+                Intent intent3 = new Intent(DashboardActivity.this, ReportActivity.class);
                 startActivity(intent3);
 
             }

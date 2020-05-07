@@ -12,19 +12,14 @@ import java.util.List;
 
 @Dao
 public interface RegistrationRepo {
-
     @Insert
-  public long addRegistration(Registration registration);
-
+    long addRegistration(Registration registration);
     @Update
-    public void updateRegistration(Registration registration);
-
+    void updateRegistration(Registration registration);
     @Delete
-    public void deleteRegistration(Registration registration);
-
+    void deleteRegistration(Registration registration);
     @Query("select * from registration")
-    public List<Registration> getAllRegistrations();
-
+    List<Registration> getAllRegistrations();
     @Query("select * from registration where email==:email and password==:password")
-    public List<Registration> getRegistrationsByEmailAndPassword(String email, String password);
+    List<Registration> getRegistrationsByEmailAndPassword(String email, String password);
 }

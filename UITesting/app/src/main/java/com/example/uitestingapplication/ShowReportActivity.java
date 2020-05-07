@@ -1,17 +1,16 @@
 package com.example.uitestingapplication;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-
-import com.example.uitestingapplication.db.MedicareAppDatabase;
 import com.example.uitestingapplication.db.entity.Report;
 import com.example.uitestingapplication.db.service.ReportViewModel;
 
@@ -19,7 +18,7 @@ import java.util.List;
 
 public class ShowReportActivity extends AppCompatActivity implements ReportRecyclerView.OnDeleteClickListener {
 
-    MedicareAppDatabase db;
+
     RecyclerView recyclerView;
     ReportRecyclerView reportRecyclerView;
     ReportViewModel reportViewModel;
@@ -29,9 +28,7 @@ public class ShowReportActivity extends AppCompatActivity implements ReportRecyc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_reports);
-        //    db = Room.databaseBuilder(getApplicationContext(), MedicareAppDatabase.class,"medicareDB").allowMainThreadQueries().build();
         recyclerView =findViewById(R.id.recyclerview);
-        //   db.getReportRepo().getAllReports();
         reportRecyclerView = new ReportRecyclerView(this,this);
         recyclerView.setAdapter(reportRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

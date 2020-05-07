@@ -1,10 +1,13 @@
 package com.example.uitestingapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,12 +24,10 @@ import java.util.Calendar;
 
 public class AppointmentActivity extends AppCompatActivity implements
     DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
-    private Appointment appointment;
+    private Appointment appointment = new Appointment();
     private MedicareAppDatabase db;
-    private AppointmentRepo appointmentRepo;
-
     private EditText appointmentTitle, doctorName;
-    private ImageView save;
+    private ImageView save,show_btn;
     private TextView tvResult;
 
     int day,month,year,hour,minute;
@@ -34,11 +35,13 @@ public class AppointmentActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db= Room.databaseBuilder(getApplicationContext(),MedicareAppDatabase.class,"medicareDB").allowMainThreadQueries().build();
         setContentView(R.layout.activity_appointment_u_i);
         appointmentTitle = findViewById(R.id.appointment_title);
         doctorName = findViewById(R.id.doctor_name);
         tvResult = findViewById(R.id.tvResult);
-
+        save = findViewById(R.id.save_appointment);
+        show_btn = findViewById(R.id.show_appointment_btn);
         tvResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,13 +56,27 @@ public class AppointmentActivity extends AppCompatActivity implements
             }
         });
 
-        save = findViewById(R.id.save_appointment);
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.i("test: ","good");
+
                 saveAppointment();
+               // Intent showAppointments = new Intent(AppointmentActivity.this,ShowAppointmentActivity.class);
+            //   startActivity(showAppointments);
+                Log.i("test: ","good");
             }
         });
+
+        show_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AppointmentActivity.this,ShowAppointmentActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
@@ -88,5 +105,6 @@ public class AppointmentActivity extends AppCompatActivity implements
         appointment.setDateAndTime(Integer.toString(finalDay+finalMonth+finalYear+finalHour+finalMinute));
         db.getAppointmentRepo().insertAppointment(appointment);
         Toast.makeText(this,"Appointment set Successfully",Toast.LENGTH_SHORT).show();
+
     }
 }

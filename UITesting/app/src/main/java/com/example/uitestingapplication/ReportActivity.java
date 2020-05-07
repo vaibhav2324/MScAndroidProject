@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.uitestingapplication.db.MedicareAppDatabase;
-import com.example.uitestingapplication.db.MedicareAppDatabase_Impl;
 import com.example.uitestingapplication.db.entity.Report;
 
 public class ReportActivity extends AppCompatActivity {

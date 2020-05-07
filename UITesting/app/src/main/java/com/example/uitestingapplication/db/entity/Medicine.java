@@ -20,7 +20,7 @@ public class Medicine {
     private Long id;
     private String medicineName;
     private String date;
-    private List<String> instruction;
+    private String instruction;
     private String treatmentPeriod;
     private String fileName;
     private byte[] medicineImage;

@@ -17,18 +17,17 @@ import java.util.List;
 public class ReportViewModel extends AndroidViewModel {
     private String TAG = this.getClass().getSimpleName();
     private ReportRepo reportRepo;
-    private MedicareAppDatabase db;
-    LiveData<List<Report>> mAllNotes;
+    private LiveData<List<Report>> mAllReports;
 
     public ReportViewModel(@NonNull Application application) {
         super(application);
-        db = MedicareAppDatabase.getDatabase(application);
+        MedicareAppDatabase db = MedicareAppDatabase.getDatabase(application);
         reportRepo = db.getReportRepo();
-        mAllNotes = reportRepo.getAllReports();
+        mAllReports = reportRepo.getAllReports();
     }
 
     public LiveData<List<Report>> getReports(){
-        return mAllNotes;
+        return mAllReports;
     }
     public void delete(Report report) {
         new DeleteAsyncTask(reportRepo).execute(report);
@@ -56,7 +55,7 @@ public class ReportViewModel extends AndroidViewModel {
 
     private class DeleteAsyncTask extends OperationsAsyncTask {
 
-        public DeleteAsyncTask(ReportRepo noteDao) {
+        DeleteAsyncTask(ReportRepo reportDao) {
             super(reportRepo);
         }
 

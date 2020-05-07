@@ -25,7 +25,7 @@ public class ReportRecyclerView extends RecyclerView.Adapter<ReportRecyclerView.
     private Context mContext;
     private OnDeleteClickListener onDeleteClickListener;
 
-    public ReportRecyclerView(Context context, OnDeleteClickListener listener){
+    ReportRecyclerView(Context context, OnDeleteClickListener listener){
         mContext = context;
         layoutInflater = LayoutInflater.from(context);
         this.onDeleteClickListener = listener;
@@ -67,14 +67,14 @@ public class ReportRecyclerView extends RecyclerView.Adapter<ReportRecyclerView.
         notifyDataSetChanged();
     }
 
-    public class ReportViewHolder extends RecyclerView.ViewHolder{
+    class ReportViewHolder extends RecyclerView.ViewHolder{
          private TextView report_filename;
             private TextView report_description;
             private ImageView image;
          private int mPosition;
-         Button delete;
+         ImageView delete;
 
-        public ReportViewHolder(View itemView) {
+        ReportViewHolder(View itemView) {
             super(itemView);
             report_filename = itemView.findViewById(R.id.filename_set);
             report_description = itemView.findViewById(R.id.description_set);
@@ -82,14 +82,14 @@ public class ReportRecyclerView extends RecyclerView.Adapter<ReportRecyclerView.
             delete 	 = itemView.findViewById(R.id.btn_delete);
         }
 
-        public void setData(Report report, int position) {
+        void setData(Report report, int position) {
             mPosition = position;
             report_filename.setText(report.getFileName());
             report_description.setText(report.getDescription());
             image.setImageBitmap(ImageConverter.convertByteArrayToImage(report.getImage()));
         }
 
-        public void setListeners() {
+        void setListeners() {
 
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override

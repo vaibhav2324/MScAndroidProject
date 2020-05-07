@@ -15,21 +15,36 @@
 
     <ImageView
         android:layout_width="30dp"
-        android:layout_marginLeft="70dp"
+        android:layout_marginStart="70dp"
         android:layout_height="30dp"
         android:layout_margin="10dp"
-        android:src="@drawable/ic_today_black_24dp" />
+        android:src="@drawable/ic_today_black_24dp"
+        android:contentDescription="@string/appointment_icon" />
 
     <TextView
-        android:layout_width="235dp"
+        android:layout_width="207dp"
         android:layout_height="45dp"
         android:layout_margin="10dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
         android:fontFamily="@font/caudex_bold_italic"
         android:text="@string/title"
         android:textColor="@color/cardview_light_background"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <ImageView
+            android:id="@+id/show_appointment_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/show_report"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/show_appointments" />
+    </LinearLayout>
 </LinearLayout>
 <LinearLayout
     android:layout_width="match_parent"
@@ -116,8 +131,7 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/done"
         android:layout_marginBottom="40dp"
-        android:fontFamily="@font/cormorant_upright_semibold"
-        android:textStyle="italic"
+
 
         />
 </LinearLayout>

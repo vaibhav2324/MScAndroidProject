@@ -17,26 +17,22 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.example.uitestingapplication.db.MedicareAppDatabase;
 import com.example.uitestingapplication.db.entity.Medicine;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-
 import petrov.kristiyan.colorpicker.ColorPicker;
 
 
 public class MainActivity extends AppCompatActivity implements
-        DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
-
+  DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
     private static final int PICK_IMAGE = 1;
-
-    Medicine medicine;
-
-    private RadioButton ongoingTreatment, noOfDays;
+    Medicine medicine=new Medicine();
+    private RadioButton ongoingTreatment, noOfDays,beforeEating,whileEating,afterEating,notMatters;
     private EditText medName,metFileName;
-    private ImageView mImage;
+    private ImageView mImage,mBtnChoose;
     private TextView textView;
     private LinearLayout color_change;
     private MedicareAppDatabase db;
@@ -49,15 +45,18 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        medName = findViewById(R.id.med_name);
+        db= Room.databaseBuilder(getApplicationContext(),MedicareAppDatabase.class,"medicareDB").allowMainThreadQueries().build();
 
+        medName = findViewById(R.id.med_name);
         ongoingTreatment = findViewById(R.id.ongoing_treatment);
         noOfDays = findViewById(R.id.no_of_days);
-
-        ImageView mBtnChoose = findViewById(R.id.choose);
+        beforeEating = findViewById(R.id.before_eating);
+        whileEating = findViewById(R.id.while_eating);
+        afterEating = findViewById(R.id.after_eating);
+        notMatters = findViewById(R.id.not_matters);
+        mBtnChoose = findViewById(R.id.choose);
         metFileName = findViewById(R.id.filename);
         mImage = findViewById(R.id.image);
-
         mBtnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,13 +76,13 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
-        textView = findViewById(R.id.instructions);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDialog();
-            }
-        });
+//        textView = findViewById(R.id.instructions);
+//        textView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openDialog();
+//            }
+//        });
 
         textView = findViewById(R.id.date_time);
         textView.setOnClickListener(new View.OnClickListener() {
@@ -153,10 +152,10 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-        public void openDialog(){
-            InstructionDialog dialogFragment = new InstructionDialog();
-            dialogFragment.show(getSupportFragmentManager(),"Instruction Dialog Box");
-        }
+//        public void openDialog(){
+//            InstructionDialog dialogFragment = new InstructionDialog();
+//            dialogFragment.show(getSupportFragmentManager(),"Instruction Dialog Box");
+//        }
 
         public void openColorPicker(){
         final ColorPicker colorPicker = new ColorPicker(this);
@@ -189,17 +188,30 @@ public class MainActivity extends AppCompatActivity implements
                         }
             }).show();
         }
-
-        public void saveMedicineData(){
+       public void saveMedicineData(){
 
             medicine.setMedicineName(medName.getText().toString());
-   //       medicine.setDate(textView.getText().toString());
+            medicine.setDate(textView.getText().toString());
             String onGoingTreatment = ongoingTreatment.getText().toString();
             String numberOfDays = noOfDays.getText().toString();
+           String before = beforeEating.getText().toString();
+           String after = afterEating.getText().toString();
+           String whileEat = whileEating.getText().toString();
+           String notMatter = notMatters.getText().toString();
             medicine.setFileName(metFileName.getText().toString());
             medicine.setMedicineImage(ImageConverter.convertImageToByteArray(mImage));
-            db.getMedicineRepo().insertMedicine(medicine);
-            Toast.makeText(this,"Data Added Successfully",Toast.LENGTH_SHORT).show();
+            if(beforeEating.isChecked()){
+                medicine.setInstruction(before);
+            }
+           if(whileEating.isChecked()){
+               medicine.setInstruction(whileEat);
+           }
+           if(afterEating.isChecked()){
+               medicine.setInstruction(after);
+           }
+           if(notMatters.isChecked()){
+               medicine.setInstruction(notMatter);
+           }
 
             if(ongoingTreatment.isChecked()){
                 medicine.setTreatmentPeriod(onGoingTreatment);
@@ -207,7 +219,21 @@ public class MainActivity extends AppCompatActivity implements
             else{
                 medicine.setTreatmentPeriod(numberOfDays);
             }
+//            medicine.setInstruction(getInstructions());
+            db.getMedicineRepo().insertMedicine(medicine);
+            Toast.makeText(this,"Data Added Successfully",Toast.LENGTH_SHORT).show();
+            Intent moveToMedicineList = new Intent(MainActivity.this,ShowMedicineActivity.class);
+            startActivity(moveToMedicineList);
         }
 
-    }
+//    @Override
+//    public void onPositiveButtonClick(String[] items, String selectedItems) {
+//        medicine.setInstruction(selectedItems);
+//    }
+//
+//    @Override
+//    public void onNegativeButtonClick() {
+//
+//    }
+}
 

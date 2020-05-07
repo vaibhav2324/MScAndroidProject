@@ -9,34 +9,40 @@
     tools:context=".ReportActivity">
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@color/deep_pruple"
-    android:gravity="start">
+    android:background="@color/deep_purple">
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:gravity="left"
+        android:gravity="start"
         android:src="@drawable/ic_filter_frames_black_24dp"
-        />
+        android:contentDescription="@string/report_icon" />
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="@string/Report"
-        android:textSize="30dp"
+        android:layout_width="207dp"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="50dp"
         android:fontFamily="@font/caudex_bold_italic"
-        android:layout_marginTop="5dp"
+        android:text="@string/Report"
         android:textColor="@color/cardview_light_background"
+        android:textSize="20sp"
         />
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="end">
     <ImageView
         android:id="@+id/showReport"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/show" />
+        android:layout_margin="10dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/show_report"
+        android:contentDescription="@string/show_reports" />
+</LinearLayout>
 </LinearLayout>
     <LinearLayout
         android:layout_marginTop="20dp"

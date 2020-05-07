@@ -15,13 +15,11 @@
     <string name="appoint_description">Take Appointments from here</string>
     <string name="appoint_button">Appointment button</string>
     <string name="users">Users</string>
-    <string name="select">Select Instructions</string>
-    <string-array name="instructions">
-        <item>Before Eating</item>
-        <item>While Eating</item>
-        <item>After Eating</item>
-        <item>Not Matters</item>
-    </string-array>
+    <string name="selectInstruction">Select Instructions</string>
+    <string name="before_eating">Before Eating</string>
+    <string name="while_eating">While Eating</string>
+    <string name="after_eating">After Eating</string>
+    <string name="not_matters">Not Matters</string>
     <string name="med_color">Medicine Colour</string>
     <string name="pick_color">Pick Colour</string>
     <string name="med_image">Medicine Image</string>
@@ -53,6 +51,7 @@
     <string name="showUploads">Show Uploads</string>
     <string name="savedReports">Saved All Reports</string>
     <string name="no_report">No Report</string>
+    <string name="no_appointment">No Appointments</string>
 
     <string name="name">Name</string>
     <string name="age">Age</string>
@@ -70,4 +69,10 @@
     <string name="card_report_description">Desciption</string>
     <string name="card_report_filename">Filename</string>
     <string name="appbar_scrolling_view_behavior" />
+    <string name="no_Medicine">No Medicine</string>
+    <string name="delete_button_for_appointment">deleteButtonForAppointment</string>
+    <string name="show_appointments">Show Appointments</string>
+    <string name="show_reports">Show Reports</string>
+    <string name="report_icon">Report Icon</string>
+    <string name="appointment_icon">Appointment Icon</string>
 </resources>

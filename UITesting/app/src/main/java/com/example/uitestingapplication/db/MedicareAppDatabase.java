@@ -18,7 +18,7 @@ import com.example.uitestingapplication.db.repo.ReportRepo;
 @Database(entities = {Registration.class, Report.class, Medicine.class, Appointment.class,},version = 1)
 public abstract class MedicareAppDatabase extends RoomDatabase {
 
-    public static volatile MedicareAppDatabase database;
+    private static volatile MedicareAppDatabase database;
     public  abstract RegistrationRepo getRegistrationRepo();
     public abstract MedicineRepo getMedicineRepo();
     public abstract AppointmentRepo getAppointmentRepo();

@@ -9,7 +9,7 @@
     tools:context=".ReportActivity">
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="50dp"
     android:orientation="horizontal"
     android:background="@color/deep_purple">
     <ImageView
@@ -40,6 +40,7 @@
         android:layout_margin="10dp"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_gravity="center|end"
         android:src="@drawable/show_report"
         android:contentDescription="@string/show_reports" />
 </LinearLayout>
@@ -56,19 +57,23 @@
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:hint="@string/Reports"
-        android:textSize="20dp"
+        android:textSize="20sp"
+        android:drawableStart="@drawable/report_description"
         android:fontFamily="@font/caudex_italic"
         android:layout_marginBottom="20dp"
-        />
+        android:autofillHints=""
+        android:inputType="text" />
     <EditText
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:hint="@string/fileName"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:fontFamily="@font/caudex_italic"
+        android:drawableStart="@drawable/report_filename"
         android:layout_marginBottom="10dp"
         android:id="@+id/filename"
-        />
+        android:autofillHints=""
+        android:inputType="text" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -86,21 +91,22 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/browse_folder"
                 android:layout_marginBottom="10dp"
-                />
+                android:contentDescription="@string/browse_report_file" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/camera"
                 android:src="@drawable/camera"
-                />
+
+                android:contentDescription="@string/report_file_camera" />
 </LinearLayout>
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_margin="10dp"
         android:id="@+id/image"
-        />
+        android:contentDescription="@string/selected_report_file" />
 
         </LinearLayout>
 

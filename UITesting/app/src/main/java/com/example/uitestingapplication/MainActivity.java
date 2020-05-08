@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements
     Medicine medicine=new Medicine();
     private RadioButton ongoingTreatment, noOfDays,beforeEating,whileEating,afterEating,notMatters;
     private EditText medName,metFileName;
-    private ImageView mImage,mBtnChoose;
+    private ImageView mImage,mBtnChoose,showMedicines;
     private TextView textView;
     private LinearLayout color_change;
     private MedicareAppDatabase db;
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements
 
         db= Room.databaseBuilder(getApplicationContext(),MedicareAppDatabase.class,"medicareDB").allowMainThreadQueries().build();
 
+        showMedicines = findViewById(R.id.show_medicines_btn);
         medName = findViewById(R.id.med_name);
         ongoingTreatment = findViewById(R.id.ongoing_treatment);
         noOfDays = findViewById(R.id.no_of_days);
@@ -76,6 +77,13 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
+        showMedicines.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ShowMedicineActivity.class);
+                startActivity(intent);
+            }
+        });
 //        textView = findViewById(R.id.instructions);
 //        textView.setOnClickListener(new View.OnClickListener() {
 //            @Override

@@ -19,9 +19,8 @@ public class AppointmentRecyclerView extends RecyclerView.Adapter<AppointmentRec
         void OnDeleteClickListener(Appointment appointment);
     }
 
-    private Appointment appointment;
     private List<Appointment> appointmentList;
-    private final LayoutInflater layoutInflater;
+    private LayoutInflater layoutInflater;
     private Context mContext;
     private AppointmentRecyclerView.OnDeleteClickListener onDeleteClickListener;
 
@@ -50,7 +49,8 @@ public class AppointmentRecyclerView extends RecyclerView.Adapter<AppointmentRec
             Appointment note = appointmentList.get(position);
             holder.setData(note, position);
             holder.setListeners();
-        } else {
+        }
+        else {
             // Covers the case of data not being ready yet.
             holder.appointmentTitle.setText(R.string.no_appointment);
         }

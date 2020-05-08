@@ -60,12 +60,7 @@ public class AppointmentActivity extends AppCompatActivity implements
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("test: ","good");
-
-                saveAppointment();
-               // Intent showAppointments = new Intent(AppointmentActivity.this,ShowAppointmentActivity.class);
-            //   startActivity(showAppointments);
-                Log.i("test: ","good");
+              saveAppointment();
             }
         });
 
@@ -105,6 +100,9 @@ public class AppointmentActivity extends AppCompatActivity implements
         appointment.setDateAndTime(Integer.toString(finalDay+finalMonth+finalYear+finalHour+finalMinute));
         db.getAppointmentRepo().insertAppointment(appointment);
         Toast.makeText(this,"Appointment set Successfully",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(AppointmentActivity.this, ShowAppointmentActivity.class);
+        startActivity(intent);
+
 
     }
 }

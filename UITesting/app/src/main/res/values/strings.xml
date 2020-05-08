@@ -75,4 +75,9 @@
     <string name="show_reports">Show Reports</string>
     <string name="report_icon">Report Icon</string>
     <string name="appointment_icon">Appointment Icon</string>
+    <string name="show_medicines">Show Medicines</string>
+    <string name="medicine_activity_logo">Medicine Activity Logo</string>
+    <string name="browse_report_file">browse_report_file</string>
+    <string name="report_file_camera">report_file_camera</string>
+    <string name="selected_report_file">selected_report_file</string>
 </resources>

@@ -14,29 +14,42 @@
         android:layout_height="wrap_content">
     <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="50dp"
     android:background="@color/green"
     android:orientation="horizontal"
     android:gravity="start">
 
     <ImageView
         android:layout_margin="10dp"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_local_hospital_black_24dp"/>
+        android:src="@drawable/ic_local_hospital_black_24dp"
+        android:contentDescription="@string/medicine_activity_logo" />
 
         <TextView
-            android:layout_width="150dp"
-            android:layout_height="55dp"
-            android:layout_marginRight="220dp"
+            android:layout_width="207dp"
+            android:layout_height="45dp"
             android:fontFamily="@font/caudex_bold_italic"
-            android:gravity="center"
+            android:gravity="start|center"
             android:text="@string/medicine"
-            android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="30dp"
+            android:textSize="20sp"
             />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <ImageView
+                android:id="@+id/show_medicines_btn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/show_medicines"
+                android:src="@drawable/show_report" />
+        </LinearLayout>
 </LinearLayout>
 
         <LinearLayout
@@ -44,17 +57,29 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/medicine" />
 
 
             <EditText
                 android:id="@+id/med_name"
                 android:layout_width="250dp"
                 android:layout_height="45dp"
-                android:layout_marginTop="20dp"
                 android:fontFamily="@font/caudex_italic"
                 android:hint="@string/med_name"
                 android:inputType="text"
                 android:textSize="18sp" />
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"

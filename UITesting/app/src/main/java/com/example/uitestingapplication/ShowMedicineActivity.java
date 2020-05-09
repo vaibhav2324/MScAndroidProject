@@ -27,7 +27,7 @@ public class ShowMedicineActivity extends AppCompatActivity implements MedicineR
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_medicine);
-        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.recyclerviewMedicines);
         medicineRecyclerView = new MedicineRecyclerView(this, this);
         recyclerView.setAdapter(medicineRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShowAppointmentActivity"
-    android:id="@+id/activity_show_appointments"
+    tools:context=".ShowUsersActivity"
+    android:id="@+id/show_users"
     android:orientation="vertical">
 
     <ImageView
@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/add_appointment"
-        android:contentDescription="@string/add_appointments_button" />
+        android:src="@drawable/add_users"
+        android:contentDescription="@string/add_users_button" />
 
 
     <LinearLayout
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
-        <include layout="@layout/content_appointments"/>
+        <include layout="@layout/content_users"/>
     </LinearLayout>
 
 </LinearLayout>

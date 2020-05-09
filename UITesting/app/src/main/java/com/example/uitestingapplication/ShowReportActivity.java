@@ -28,7 +28,7 @@ public class ShowReportActivity extends AppCompatActivity implements ReportRecyc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_reports);
-        recyclerView =findViewById(R.id.recyclerview);
+        recyclerView =findViewById(R.id.recyclerviewReport);
         reportRecyclerView = new ReportRecyclerView(this,this);
         recyclerView.setAdapter(reportRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

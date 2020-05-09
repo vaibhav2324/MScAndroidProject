@@ -7,6 +7,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.room.Room;
 
 import com.example.uitestingapplication.db.MedicareAppDatabase;
 import com.example.uitestingapplication.db.entity.Appointment;
@@ -21,7 +22,7 @@ public class AppointmentViewModel extends AndroidViewModel {
 
     public AppointmentViewModel(@NonNull Application application) {
         super(application);
-        MedicareAppDatabase db = MedicareAppDatabase.getDatabase(application);
+        MedicareAppDatabase db= Room.databaseBuilder(application.getApplicationContext(),MedicareAppDatabase.class,"medicareDB").allowMainThreadQueries().build();
         appointmentRepo = db.getAppointmentRepo();
         mAllAppointments = appointmentRepo.getAllAppointments();
     }

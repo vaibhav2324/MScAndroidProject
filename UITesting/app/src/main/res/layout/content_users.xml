@@ -7,10 +7,10 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="@android:color/darker_gray"
-    tools:showIn="@layout/activity_show_medicine"
-    tools:context=".ShowMedicineActivity"
-    android:id="@+id/recyclerviewMedicines"
-    tools:listitem="@layout/medicine_items_layout">
+    tools:showIn="@layout/activity_show_users"
+    tools:context=".ShowUsersActivity"
+    android:id="@+id/recyclerviewUsers"
+    tools:listitem="@layout/user_items_layout">
 
 
 </androidx.recyclerview.widget.RecyclerView>

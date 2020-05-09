@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="@android:color/darker_gray"
-    tools:showIn="@layout/activity_show_reports"
+    tools:showIn="@layout/activity_show_appointment"
     tools:context=".ShowAppointmentActivity"
     android:id="@+id/appointmentRecyclerview"
     tools:listitem="@layout/appointment_items_layout">

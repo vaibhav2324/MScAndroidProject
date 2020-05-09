@@ -1,5 +1,6 @@
 package com.example.uitestingapplication.db.repo;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -13,13 +14,15 @@ import java.util.List;
 @Dao
 public interface RegistrationRepo {
     @Insert
-    long addRegistration(Registration registration);
+    long addUser(Registration registration);
     @Update
-    void updateRegistration(Registration registration);
+    int updateUser(Registration registration);
     @Delete
-    void deleteRegistration(Registration registration);
+    int deleteUser(Registration registration);
     @Query("select * from registration")
-    List<Registration> getAllRegistrations();
+    LiveData<List<Registration>> getAllUsers();
     @Query("select * from registration where email==:email and password==:password")
-    List<Registration> getRegistrationsByEmailAndPassword(String email, String password);
+    List<Registration> getUserByEmailAndPassword(String email, String password);
+    @Query("select * from registration")
+    List<Registration> getAllUserWithArrayList();
 }

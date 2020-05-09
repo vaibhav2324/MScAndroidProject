@@ -9,7 +9,7 @@
     android:background="@android:color/darker_gray"
     tools:showIn="@layout/activity_show_reports"
     tools:context=".ShowReportActivity"
-    android:id="@+id/recyclerview"
+    android:id="@+id/recyclerviewReport"
     tools:listitem="@layout/report_items_layout">
 
 

@@ -25,7 +25,6 @@ public class ReportViewModel extends AndroidViewModel {
         reportRepo = db.getReportRepo();
         mAllReports = reportRepo.getAllReports();
     }
-
     public LiveData<List<Report>> getReports(){
         return mAllReports;
     }
@@ -39,7 +38,7 @@ public class ReportViewModel extends AndroidViewModel {
         Log.i(TAG, "ViewModel Destroyed");
     }
 
-    private class OperationsAsyncTask extends AsyncTask<Report, Void, Void> {
+    class OperationsAsyncTask extends AsyncTask<Report, Void, Void> {
 
         ReportRepo mAsyncTaskDao;
 
@@ -53,7 +52,7 @@ public class ReportViewModel extends AndroidViewModel {
         }
     }
 
-    private class DeleteAsyncTask extends OperationsAsyncTask {
+    class DeleteAsyncTask extends OperationsAsyncTask {
 
         DeleteAsyncTask(ReportRepo reportDao) {
             super(reportRepo);

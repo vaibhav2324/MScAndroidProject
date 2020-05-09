@@ -114,7 +114,8 @@ public class ReportActivity extends AppCompatActivity {
 
         switch (requestCode){
             case CAMERA_INTENT:
-            if(requestCode==Activity.RESULT_OK)
+
+            if(resultCode==Activity.RESULT_OK)
             {
                 bitmap = (Bitmap) data.getExtras().get("data");
                 if (bitmap==null){
@@ -127,6 +128,11 @@ public class ReportActivity extends AppCompatActivity {
             }
             else{
                 Toast.makeText(this,"Result not OK",Toast.LENGTH_SHORT).show();
+            }
+            break;
+            default:
+            {
+                Toast.makeText(this,"Something went wrong !",Toast.LENGTH_SHORT).show();
             }
             break;
         }

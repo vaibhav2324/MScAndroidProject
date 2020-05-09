@@ -63,7 +63,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 String gender =  gender_button.getText().toString().trim();
 
           Registration register=new Registration(email,password,mobileNo,ageStr,gender);
-          long id=db.getRegistrationRepo().addRegistration(register);
+          long id=db.getRegistrationRepo().addUser(register);
                 Log.i("db","success with id "+id);
                 Toast.makeText(getApplicationContext(),"Registration Successful",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegistrationActivity.this,LoginActivity.class);

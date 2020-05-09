@@ -1,10 +1,13 @@
 package com.example.uitestingapplication;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -29,10 +32,13 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 public class MainActivity extends AppCompatActivity implements
   DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
     private static final int PICK_IMAGE = 1;
+    private static final int CAMERA_INTENT = 51;
+
     Medicine medicine=new Medicine();
+    private Bitmap bitmap;
     private RadioButton ongoingTreatment, noOfDays,beforeEating,whileEating,afterEating,notMatters;
     private EditText medName,metFileName;
-    private ImageView mImage,mBtnChoose,showMedicines;
+    private ImageView mImage,mBtnChoose,showMedicines,camera;
     private TextView textView;
     private LinearLayout color_change;
     private MedicareAppDatabase db;
@@ -64,10 +70,22 @@ public class MainActivity extends AppCompatActivity implements
                 openFile();
             }
         });
+        camera = findViewById(R.id.medicine_camera);
+        bitmap = null;
         metFileName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if(intent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(intent, CAMERA_INTENT);
+                }
             }
         });
         mImage.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
         finalYear = i;
-        finalMonth = i1;
+        finalMonth = i1+1;
         finalDay = i2;
 
         Calendar calendar = Calendar.getInstance();
@@ -154,6 +172,32 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode){
+            case CAMERA_INTENT:
+
+                if(resultCode== Activity.RESULT_OK)
+                {
+                    bitmap = (Bitmap) data.getExtras().get("data");
+                    if (bitmap==null){
+                        Toast.makeText(this,"Bitmap is null",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        mImage.setImageBitmap(bitmap);
+                        Toast.makeText(this,"Image picked Successfully",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(this,"Result not OK",Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+            {
+                Toast.makeText(this,"Something went wrong !",Toast.LENGTH_SHORT).show();
+            }
+            break;
+        }
+
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null){
             Uri mImageUri = data.getData();
             mImage.setImageURI(mImageUri);

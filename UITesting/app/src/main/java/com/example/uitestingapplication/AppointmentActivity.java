@@ -76,7 +76,7 @@ public class AppointmentActivity extends AppCompatActivity implements
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
         finalYear = i;
-        finalMonth = i1;
+        finalMonth = i1+1;
         finalDay = i2;
 
         Calendar calendar = Calendar.getInstance();
@@ -98,7 +98,8 @@ public class AppointmentActivity extends AppCompatActivity implements
         appointment.setAppointmentTitle(appointmentTitle.getText().toString());
         appointment.setDoctorName(doctorName.getText().toString());
         appointment.setDateAndTime(Integer.toString(finalDay+finalMonth+finalYear+finalHour+finalMinute));
-        db.getAppointmentRepo().insertAppointment(appointment);
+        long id = db.getAppointmentRepo().insertAppointment(appointment);
+        Log.i("id",Long.toString(id));
         Toast.makeText(this,"Appointment set Successfully",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(AppointmentActivity.this, ShowAppointmentActivity.class);
         startActivity(intent);

@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String password = textPassword.getText().toString().trim();
                 final String username = textUsername.getText().toString().trim();
-                List<Registration> retrievedList = medicareAppDatabase.getRegistrationRepo().getRegistrationsByEmailAndPassword(username,password);
+                List<Registration> retrievedList = medicareAppDatabase.getRegistrationRepo().getUserByEmailAndPassword(username,password);
                 if(retrievedList.size()>0)
                 {
                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();

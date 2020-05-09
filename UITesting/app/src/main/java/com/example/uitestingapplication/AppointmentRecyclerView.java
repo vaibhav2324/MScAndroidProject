@@ -1,6 +1,7 @@
 package com.example.uitestingapplication;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +45,6 @@ public class AppointmentRecyclerView extends RecyclerView.Adapter<AppointmentRec
 
     @Override
     public void onBindViewHolder(@NonNull AppointmentViewHolder holder, int position) {
-
         if (appointmentList != null) {
             Appointment note = appointmentList.get(position);
             holder.setData(note, position);
@@ -80,14 +80,16 @@ public class AppointmentRecyclerView extends RecyclerView.Adapter<AppointmentRec
             appointmentTitle = itemView.findViewById(R.id.show_appointment_title);
             doctorName = itemView.findViewById(R.id.show_doctor_name);
             appointmentDate = itemView.findViewById(R.id.show_appointment_date);
-            delete 	 = itemView.findViewById(R.id.btn_delete);
+            delete 	 = itemView.findViewById(R.id.delete_appointment_btn);
         }
 
         void setData(Appointment appointment, int position) {
+            Log.i("data in set",appointment.toString());
             mPosition = position;
             appointmentTitle.setText(appointment.getAppointmentTitle());
             doctorName.setText(appointment.getDoctorName());
             appointmentDate.setText(appointment.getDateAndTime());
+            Log.i("test","test");
         }
 
         void setListeners() {

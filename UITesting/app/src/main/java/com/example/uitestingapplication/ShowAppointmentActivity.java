@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -37,18 +38,19 @@ public class ShowAppointmentActivity extends AppCompatActivity implements Appoin
             @Override
             public void onChanged(List<Appointment> appointments) {
                 appointmentRecyclerView.setAppointment(appointments);
+                Log.i("appoint",appointments.toString());
 
             }
 
         });
-//        ImageView fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(ShowAppointmentActivity.this, AppointmentActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        ImageView fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShowAppointmentActivity.this, AppointmentActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

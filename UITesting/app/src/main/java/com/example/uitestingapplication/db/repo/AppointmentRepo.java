@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface AppointmentRepo {
     @Insert
-    void insertAppointment(Appointment appointment);
+    long insertAppointment(Appointment appointment);
 
     @Update
     void updateAppointment(Appointment appointment);

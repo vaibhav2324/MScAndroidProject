@@ -38,11 +38,11 @@
                         android:layout_height="wrap_content"
                         tools:ignore="UselessParent">
                         <ImageView
-                            android:id="@+id/set_image"
+                            android:id="@+id/set_user_image"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="5dp"
-                            android:contentDescription="@string/image_of_medicine" />
+                            android:contentDescription="@string/user_image" />
 
                         <LinearLayout
                             android:orientation="vertical"
@@ -51,30 +51,30 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/set_medicine_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:gravity="start"
-                            android:layout_margin="3dp"
-                            android:hint="@string/med_name"
-                            />
-
-                        <TextView
-                            android:id="@+id/set_medicine_date"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:gravity="start"
-                            android:layout_margin="3dp"
-                            android:hint="@string/start_date"
-                            />
                             <TextView
-                                android:id="@+id/set_medicine_instruction"
+                                android:id="@+id/set_user_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="30dp"
                                 android:gravity="start"
                                 android:layout_margin="3dp"
-                                android:hint="@string/selectInstruction"
+                                android:hint="@string/user_name"
+                                />
+
+                            <TextView
+                                android:id="@+id/set_user_gender"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="start"
+                                android:layout_margin="3dp"
+                                android:hint="@string/user_gender"
+                                />
+                            <TextView
+                                android:id="@+id/set_user_age"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="start"
+                                android:layout_margin="3dp"
+                                android:hint="@string/user_s_age"
                                 />
                         </LinearLayout>
 
@@ -88,13 +88,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/btn_delete"
-                    android:src="@drawable/delete_medicine"
+                    android:id="@+id/delete_user"
+                    android:src="@drawable/delete_user"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_margin="10dp"
                     android:layout_marginEnd="0dp"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:contentDescription="@string/delete_user_btn" />
 
 
             </LinearLayout>

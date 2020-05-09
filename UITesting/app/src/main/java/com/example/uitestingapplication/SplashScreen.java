@@ -9,7 +9,6 @@ public class SplashScreen extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
-
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();

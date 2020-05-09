@@ -51,6 +51,8 @@
     <string name="showUploads">Show Uploads</string>
     <string name="savedReports">Saved All Reports</string>
     <string name="no_report">No Report</string>
+    <string name="no_users">No Users</string>
+
     <string name="no_appointment">No Appointments</string>
 
     <string name="name">Name</string>
@@ -80,4 +82,12 @@
     <string name="browse_report_file">browse_report_file</string>
     <string name="report_file_camera">report_file_camera</string>
     <string name="selected_report_file">selected_report_file</string>
+    <string name="image_of_medicine">Image Of Medicine</string>
+    <string name="delete_user_btn">Delete User Btn</string>
+    <string name="user_image">User\'s Image</string>
+    <string name="user_name">User\'s Name</string>
+    <string name="user_gender">User\'s Gender</string>
+    <string name="user_s_age">User\'s Age</string>
+    <string name="add_appointments_button">Add Appointments Button</string>
+    <string name="add_users_button">Add Users Button</string>
 </resources>

@@ -16,7 +16,7 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_u_i);
 
-        medicine = (CardView) findViewById(R.id.medicine_activity);
+        medicine = findViewById(R.id.medicine_activity);
         medicine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -25,7 +25,7 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
-        appointment = (CardView) findViewById(R.id.appointment_activity);
+        appointment = findViewById(R.id.appointment_activity);
         appointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,7 +35,16 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
-        reports = (CardView) findViewById(R.id.reports_activity);
+        users = findViewById(R.id.users_activity);
+        users.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashboardActivity.this,ShowUsersActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        reports = findViewById(R.id.reports_activity);
         reports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +53,5 @@ public class DashboardActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 }

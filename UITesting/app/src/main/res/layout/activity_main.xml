@@ -272,10 +272,10 @@
                     android:id="@+id/filename"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:layout_marginEnd="30dp"
                     android:fontFamily="@font/caudex_italic"
                     android:hint="@string/fileName"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:autofillHints="" />
 
                 <ImageView
                     android:id="@+id/choose"
@@ -285,6 +285,14 @@
                     android:layout_marginBottom="10dp"
                     android:contentDescription="@string/med_img_des"
                     android:src="@drawable/choose" />
+                <ImageView
+                    android:id="@+id/medicine_camera"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/med_img_des"
+                    android:src="@drawable/medicine_camera" />
 
             </LinearLayout>
 

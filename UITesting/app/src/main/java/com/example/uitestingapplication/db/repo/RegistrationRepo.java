@@ -25,4 +25,7 @@ public interface RegistrationRepo {
     List<Registration> getUserByEmailAndPassword(String email, String password);
     @Query("select * from registration")
     List<Registration> getAllUserWithArrayList();
+    @Query("select * from registration where id==:id")
+    LiveData<List<Registration>> getAllUsersById(int id);
+
 }

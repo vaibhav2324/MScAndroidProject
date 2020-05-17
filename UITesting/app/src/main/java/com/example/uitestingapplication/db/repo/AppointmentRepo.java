@@ -21,7 +21,9 @@ public interface AppointmentRepo {
     @Delete
     void deleteAppointment(Appointment appointment);
 
-    @Query("select * from appointments")
+    @Query("select * from appointments ")
     LiveData<List<Appointment>> getAllAppointments();
+    @Query("select * from appointments where userID==:userID")
+    LiveData<List<Appointment>> getAllAppointmentsByUserId(int userID);
 
 }

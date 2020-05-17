@@ -7,122 +7,132 @@
     android:gravity="start"
     android:orientation="vertical"
     tools:context=".ReportActivity">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:orientation="horizontal"
-    android:background="@color/deep_purple">
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:gravity="start"
-        android:src="@drawable/ic_filter_frames_black_24dp"
-        android:contentDescription="@string/report_icon" />
-    <TextView
-        android:layout_width="207dp"
-        android:layout_height="45dp"
-        android:layout_margin="10dp"
-        android:layout_marginStart="50dp"
-        android:fontFamily="@font/caudex_bold_italic"
-        android:text="@string/Report"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="20sp"
-        />
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="end">
-    <ImageView
-        android:id="@+id/showReport"
-        android:layout_margin="10dp"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|end"
-        android:src="@drawable/show_report"
-        android:contentDescription="@string/show_reports" />
-</LinearLayout>
-</LinearLayout>
+
     <LinearLayout
-        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/deep_purple"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/report_icon"
+            android:gravity="start"
+            android:src="@drawable/ic_filter_frames_black_24dp" />
+
+        <TextView
+            android:layout_width="207dp"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="50dp"
+            android:fontFamily="@font/caudex_bold_italic"
+            android:text="@string/Report"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/showReport"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center|end"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/show_reports"
+                android:src="@drawable/show_report" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/description"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:hint="@string/Reports"
-        android:textSize="20sp"
-        android:drawableStart="@drawable/report_description"
-        android:fontFamily="@font/caudex_italic"
-        android:layout_marginBottom="20dp"
-        android:autofillHints=""
-        android:inputType="text" />
-    <EditText
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:hint="@string/fileName"
-        android:textSize="20sp"
-        android:fontFamily="@font/caudex_italic"
-        android:drawableStart="@drawable/report_filename"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/filename"
-        android:autofillHints=""
-        android:inputType="text" />
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:autofillHints=""
+            android:drawableStart="@drawable/report_description"
+            android:fontFamily="@font/caudex_italic"
+            android:hint="@string/Reports"
+            android:inputType="text"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/filename"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints=""
+            android:drawableStart="@drawable/report_filename"
+            android:fontFamily="@font/caudex_italic"
+            android:hint="@string/fileName"
+            android:inputType="text"
+            android:textSize="20sp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal">
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:layout_margin="20dp">
-            <ImageView
-                android:id="@+id/choose"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/browse_folder"
-                android:layout_marginBottom="10dp"
-                android:contentDescription="@string/browse_report_file" />
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/choose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/browse_report_file"
+                    android:src="@drawable/browse_folder" />
+
+                <ImageView
+                    android:id="@+id/camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/report_file_camera"
+
+                    android:src="@drawable/camera" />
+            </LinearLayout>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/camera"
-                android:src="@drawable/camera"
-
-                android:contentDescription="@string/report_file_camera" />
-</LinearLayout>
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"
-        android:id="@+id/image"
-        android:contentDescription="@string/selected_report_file" />
+                android:id="@+id/report_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/selected_report_file" />
 
         </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
         <Button
-        android:id="@+id/save_report"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Save"
-        android:fontFamily="@font/caudex_bold_italic"
-        />
+            android:id="@+id/save_report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/caudex_bold_italic"
+            android:text="@string/Save" />
     </LinearLayout>
 </LinearLayout>

@@ -18,11 +18,11 @@ import lombok.ToString;
 @ToString
 public class Report {
     @PrimaryKey(autoGenerate = true)
-  private Long id;
-//    @ColumnInfo(name = "description")
+    private Long id;
     private String description;
-//    @ColumnInfo(name = "fileName")
-    private  String fileName;
+    private String fileName;
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     private byte[] image;
+
+    private int userID;
 }

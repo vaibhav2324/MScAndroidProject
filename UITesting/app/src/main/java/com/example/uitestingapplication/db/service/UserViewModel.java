@@ -9,6 +9,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 
+import com.example.uitestingapplication.SessionManagement;
 import com.example.uitestingapplication.db.MedicareAppDatabase;
 import com.example.uitestingapplication.db.entity.Registration;
 import com.example.uitestingapplication.db.repo.RegistrationRepo;
@@ -24,7 +25,6 @@ public class UserViewModel extends AndroidViewModel {
     public UserViewModel(@NonNull Application application) {
         super(application);
         MedicareAppDatabase db= Room.databaseBuilder(application.getApplicationContext(),MedicareAppDatabase.class,"medicareDB").allowMainThreadQueries().build();
-
         userRepo = db.getRegistrationRepo();
         mAllUsers = userRepo.getAllUsers();
        }

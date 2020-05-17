@@ -16,16 +16,18 @@ import com.example.uitestingapplication.db.entity.Report;
 import java.util.List;
 
 public class ReportRecyclerView extends RecyclerView.Adapter<ReportRecyclerView.ReportViewHolder> {
+
     public interface OnDeleteClickListener {
         void OnDeleteClickListener(Report report);
     }
+
     private Report report;
     private List<Report> reportList;
     private final LayoutInflater layoutInflater;
     private Context mContext;
     private OnDeleteClickListener onDeleteClickListener;
 
-    ReportRecyclerView(Context context, OnDeleteClickListener listener){
+    ReportRecyclerView(Context context, OnDeleteClickListener listener) {
         mContext = context;
         layoutInflater = LayoutInflater.from(context);
         this.onDeleteClickListener = listener;
@@ -62,35 +64,36 @@ public class ReportRecyclerView extends RecyclerView.Adapter<ReportRecyclerView.
         else return 0;
     }
 
-    public void setReport(List<Report> reports){
+    public void setReport(List<Report> reports) {
         reportList = reports;
         notifyDataSetChanged();
     }
 
-    class ReportViewHolder extends RecyclerView.ViewHolder{
-         private TextView report_filename;
-            private TextView report_description;
-            private ImageView image;
-         private int mPosition;
-         ImageView delete;
+    class ReportViewHolder extends RecyclerView.ViewHolder {
+        private TextView report_filename;
+        private TextView report_description;
+        private ImageView image;
+        private int mPosition;
+        ImageView delete;
 
         ReportViewHolder(View itemView) {
             super(itemView);
             report_filename = itemView.findViewById(R.id.filename_set);
             report_description = itemView.findViewById(R.id.description_set);
-            image = itemView.findViewById(R.id.set_image);
-            delete 	 = itemView.findViewById(R.id.btn_delete);
+            image = itemView.findViewById(R.id.set_image_report);
+            delete = itemView.findViewById(R.id.btn_delete_report);
         }
 
         void setData(Report report, int position) {
             mPosition = position;
             report_filename.setText(report.getFileName());
             report_description.setText(report.getDescription());
-            image.setImageBitmap(ImageConverter.convertByteArrayToImage(report.getImage()));
+            if (report.getImage() != null) {
+                image.setImageBitmap(ImageConverter.convertByteArrayToImage(report.getImage()));
+            }
         }
 
         void setListeners() {
-
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

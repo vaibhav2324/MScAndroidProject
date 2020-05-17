@@ -9,8 +9,20 @@ public class SplashScreen extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
+SessionManagement ss=new SessionManagement(SplashScreen.this);
+        int id = ss.getUserIdBySession();
+
+        if(id==-1) {
+
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else
+        {
+            Intent intent = new Intent(this, DashboardActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }

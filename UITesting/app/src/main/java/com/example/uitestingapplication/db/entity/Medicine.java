@@ -24,4 +24,6 @@ public class Medicine {
     private String treatmentPeriod;
     private String fileName;
     private byte[] medicineImage;
+
+    private int userID;
 }

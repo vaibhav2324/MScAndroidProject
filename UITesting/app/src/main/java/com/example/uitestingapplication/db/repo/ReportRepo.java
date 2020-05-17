@@ -24,6 +24,9 @@ public interface ReportRepo {
 
     @Query("select * from reports")
     LiveData<List<Report>> getAllReports();
+  @Query("select * from reports   where userID==:userID")
+  LiveData<List<Report>> getAllReportsByUserID(int userID);
+
 
 
 }

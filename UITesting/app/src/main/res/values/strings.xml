@@ -90,4 +90,23 @@
     <string name="user_s_age">User\'s Age</string>
     <string name="add_appointments_button">Add Appointments Button</string>
     <string name="add_users_button">Add Users Button</string>
+    <string name="invalid_name">Please enter a valid name</string>
+    <string name="invalid_instruction">Please select an instruction</string>
+    <string name="invalid_date">Set the date</string>
+    <string name="invalid_filename">Please enter a filename</string>
+    <string name="invalid_report_filename">Please enter the report filename</string>
+    <string name="invalid_appointment_title">Enter a valid Title</string>
+    <string name="invalid_doctor_name">Enter Doctor\'s name</string>
+    <string name="invalid_report_description">Enter description</string>
+    <string name="invalid_image">"Please add Image "</string>
+    <string name="invalid_username">Enter valid username</string>
+    <string name="invalid_password">Please enter password</string>
+    <string name="invalid_registration_username">Enter valid and unique username</string>
+    <string name="invalid_registration_name">Enter name</string>
+    <string name="invalid_registration_password">Enter password</string>
+    <string name="invalid_registration_age">Enter age</string>
+    <string name="invalid_registration_mobile">Enter mobile number</string>
+    <string name="invalid_registration_valid_mobile">Enter valid mobile number</string>
+    <string name="user_name_user_profile">User Name</string>
+    <string name="logout_button">Logout Button</string>
 </resources>

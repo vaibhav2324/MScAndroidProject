@@ -134,7 +134,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="10dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/ic_playlist_add_check_black_24dp" />
 
                 <TextView
@@ -156,6 +156,7 @@
                 android:orientation="vertical">
 
                 <RadioGroup
+                    android:id="@+id/instruction_radio_group"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -226,6 +227,7 @@
                   android:orientation="vertical"
                   android:gravity="end">
                   <RadioGroup
+                      android:id="@+id/duration_radio_group"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
@@ -269,7 +271,7 @@
                     android:src="@drawable/add_image" />
 
                 <EditText
-                    android:id="@+id/filename"
+                    android:id="@+id/filename_medicine"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:fontFamily="@font/caudex_italic"

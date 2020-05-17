@@ -5,6 +5,9 @@
     <uses-feature
         android:name="android.hardware.camera2"
         android:required="true" />
+    <!--New permission added -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="false"
@@ -13,7 +16,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShowUsersActivity"></activity>
+        <activity
+            android:name=".ShowUsersActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".ShowAppointmentActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

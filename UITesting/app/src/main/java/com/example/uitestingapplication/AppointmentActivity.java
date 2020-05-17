@@ -16,14 +16,17 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.example.uitestingapplication.db.MedicareAppDatabase;
 import com.example.uitestingapplication.db.entity.Appointment;
-import com.example.uitestingapplication.db.repo.AppointmentRepo;
 
 import java.util.Calendar;
 
 public class AppointmentActivity extends AppCompatActivity implements
     DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
+    AwesomeValidation awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
     private Appointment appointment = new Appointment();
     private MedicareAppDatabase db;
     private EditText appointmentTitle, doctorName;
@@ -55,7 +58,6 @@ public class AppointmentActivity extends AppCompatActivity implements
 
             }
         });
-
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,17 +95,30 @@ public class AppointmentActivity extends AppCompatActivity implements
         tvResult.setText(finalDay+"-"+finalMonth+"-"+finalYear+" "+" Time "+finalHour+":"+finalMinute);
     }
 
+    private boolean appointmentValidation(){
+        awesomeValidation.addValidation(this,R.id.appointment_title, RegexTemplate.NOT_EMPTY,R.string.invalid_appointment_title);
+        awesomeValidation.addValidation(this,R.id.doctor_name, RegexTemplate.NOT_EMPTY,R.string.invalid_doctor_name);
+        if (appointmentTitle.getText().toString().isEmpty() || doctorName.getText().toString().isEmpty()){
+            return false;
+        }
+
+        return true;
+    }
+
     public void saveAppointment()
     {
-        appointment.setAppointmentTitle(appointmentTitle.getText().toString());
-        appointment.setDoctorName(doctorName.getText().toString());
-        appointment.setDateAndTime(Integer.toString(finalDay+finalMonth+finalYear+finalHour+finalMinute));
-        long id = db.getAppointmentRepo().insertAppointment(appointment);
-        Log.i("id",Long.toString(id));
-        Toast.makeText(this,"Appointment set Successfully",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(AppointmentActivity.this, ShowAppointmentActivity.class);
-        startActivity(intent);
-
-
+      Boolean b=  awesomeValidation.validate();
+      Log.i("test",b.toString());
+        if (appointmentValidation()) {
+            appointment.setAppointmentTitle(appointmentTitle.getText().toString());
+            appointment.setDoctorName(doctorName.getText().toString());
+            appointment.setDateAndTime(finalDay+"-"+finalMonth+"-"+finalYear+" "+" Time "+finalHour+":"+finalMinute);
+            int id = new SessionManagement(getApplicationContext()).getUserIdBySession();
+            appointment.setUserID(id);
+            db.getAppointmentRepo().insertAppointment(appointment);
+            Toast.makeText(this, "Appointment set Successfully", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(AppointmentActivity.this, ShowAppointmentActivity.class);
+            startActivity(intent);
+        }
     }
 }

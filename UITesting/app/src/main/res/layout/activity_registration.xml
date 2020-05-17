@@ -19,7 +19,7 @@
         android:layout_marginTop="50dp"
         android:text="@string/register"
         android:textColor="@color/primaryTextColor"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:textStyle="bold"/>
 
     <EditText
@@ -28,7 +28,7 @@
         android:layout_height="45dp"
         android:layout_margin="5dp"
         android:layout_marginTop="30dp"
-        android:drawableLeft="@drawable/username"
+        android:drawableStart="@drawable/username"
         android:hint="@string/name"
         android:inputType="text"
         tools:layout_editor_absoluteX="206dp"
@@ -39,7 +39,7 @@
         android:layout_width="250dp"
         android:layout_margin="5dp"
         android:layout_height="45dp"
-        android:drawableLeft="@drawable/username"
+        android:drawableStart="@drawable/username"
         android:hint="@string/username"
         android:inputType="textEmailAddress"
         tools:layout_editor_absoluteX="202dp"
@@ -50,7 +50,7 @@
         android:layout_width="250dp"
         android:layout_margin="5dp"
         android:layout_height="45dp"
-        android:drawableLeft="@drawable/password"
+        android:drawableStart="@drawable/password"
         android:hint="@string/password"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="202dp"
@@ -62,7 +62,7 @@
         android:layout_width="250dp"
         android:layout_margin="5dp"
         android:layout_height="45dp"
-        android:drawableLeft="@drawable/username"
+        android:drawableStart="@drawable/username"
         android:inputType="number"
         android:hint="@string/age"
         tools:layout_editor_absoluteX="202dp"
@@ -73,9 +73,10 @@
         android:layout_width="250dp"
         android:layout_margin="5dp"
         android:layout_height="45dp"
-        android:drawableLeft="@drawable/username"
+        android:drawableStart="@drawable/username"
         android:hint="@string/mobile"
         android:inputType="phone"
+        android:maxLength="10"
         tools:layout_editor_absoluteX="202dp"
         tools:layout_editor_absoluteY="387dp" />
 
@@ -111,7 +112,7 @@
         android:layout_height="55dp"
         android:layout_marginTop="20dp"
         android:text="@string/register"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="italic"
         tools:layout_editor_absoluteX="187dp"
         tools:layout_editor_absoluteY="524dp" />

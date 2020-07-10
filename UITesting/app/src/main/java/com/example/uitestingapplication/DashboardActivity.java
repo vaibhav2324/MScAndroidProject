@@ -42,44 +42,44 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard_u_i);
         final SharedPreferences pref = getApplicationContext().getSharedPreferences("session", 0); // 0 - for private mode
 
-//        Button button;
-//        button = findViewById(R.id.notify);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                NotificationCompat.Builder builder = new NotificationCompat.Builder(DashboardActivity.this);
-//                builder.setSmallIcon(R.mipmap.ic_launcher_round);
-//                builder.setContentTitle("MediCare");
-//                builder.setContentText("Notification");
-//                builder.setLights(Color.BLUE,200,200);
-//                Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//                builder.setSound(soundUri);
-//                long[] vibrate = {100,500,100,500};
-//                builder.setVibrate(vibrate);
-//
-//                //create pending activity
-//                Intent intent = new Intent(DashboardActivity.this,DashboardActivity.class);
-//                intent.putExtra("key",NOTIFY_ID);
-//                PendingIntent pendingIntent = PendingIntent.getActivity(DashboardActivity.this, 123,intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//                builder.setContentIntent(pendingIntent);
-//
-//                NotificationCompat.Action.Builder actionBuilder = new NotificationCompat.Action.Builder(R.mipmap.ic_launcher_round,"Action 1",pendingIntent);
-//                NotificationCompat.Action action = actionBuilder.build();
-//                builder.addAction(action);
-//                builder.addAction(R.mipmap.ic_launcher_round,"Action 2",pendingIntent);
-//
-//                NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();
-//                bigPictureStyle.bigPicture(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher));
-//
-//                builder.setStyle(bigPictureStyle);
-//
-//                Notification notification = builder.build();
-//
-//                NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-//                manager.notify(NOTIFY_ID,notification);
-//            }
-//        });
-//
+        Button button;
+        button = findViewById(R.id.notify);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(DashboardActivity.this);
+                builder.setSmallIcon(R.mipmap.ic_launcher_round);
+                builder.setContentTitle("MediCare");
+                builder.setContentText("Notification");
+                builder.setLights(Color.BLUE,200,200);
+                Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                builder.setSound(soundUri);
+                long[] vibrate = {100,500,100,500};
+                builder.setVibrate(vibrate);
+
+                //create pending activity
+                Intent intent = new Intent(DashboardActivity.this,DashboardActivity.class);
+                intent.putExtra("key",NOTIFY_ID);
+                PendingIntent pendingIntent = PendingIntent.getActivity(DashboardActivity.this, 123,intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                builder.setContentIntent(pendingIntent);
+
+                NotificationCompat.Action.Builder actionBuilder = new NotificationCompat.Action.Builder(R.mipmap.ic_launcher_round,"Action 1",pendingIntent);
+                NotificationCompat.Action action = actionBuilder.build();
+                builder.addAction(action);
+                builder.addAction(R.mipmap.ic_launcher_round,"Action 2",pendingIntent);
+
+                NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();
+                bigPictureStyle.bigPicture(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher));
+
+                builder.setStyle(bigPictureStyle);
+
+                Notification notification = builder.build();
+
+                NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                manager.notify(NOTIFY_ID,notification);
+            }
+        });
+
         circleImageView = findViewById(R.id.session_profile_image);
         user_name = findViewById(R.id.user_session_name);
         user_email = findViewById(R.id.user_session_email);

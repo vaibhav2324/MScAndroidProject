@@ -109,4 +109,5 @@
     <string name="invalid_registration_valid_mobile">Enter valid mobile number</string>
     <string name="user_name_user_profile">User Name</string>
     <string name="logout_button">Logout Button</string>
+    <string name="user_profile_photo">User Profile Photo</string>
 </resources>

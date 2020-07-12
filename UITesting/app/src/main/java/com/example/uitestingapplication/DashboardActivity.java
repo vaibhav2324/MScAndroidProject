@@ -1,14 +1,11 @@
 package com.example.uitestingapplication;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.core.app.NotificationCompat;
-
 import android.app.Activity;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -16,25 +13,29 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.NotificationCompat;
 
 public class DashboardActivity extends AppCompatActivity {
     private static final int NOTIFY_ID = 2020;
     private static final int CAMERA_INTENT = 51;
+    private static final String CHANNEL_ID = "Medicare_notification";
     CardView medicine, appointment, users, reports, settings;
-    CircleImageView circleImageView;
-    ImageView imageView;
+    ImageView imageView,profile_pic;
     Bitmap bitmap;
     TextView user_name, user_email;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,11 @@ public class DashboardActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(DashboardActivity.this);
+                builder.setChannelId(CHANNEL_ID);
+                builder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+                builder.setCategory(NotificationCompat.CATEGORY_REMINDER);
                 builder.setSmallIcon(R.mipmap.ic_launcher_round);
                 builder.setContentTitle("MediCare");
                 builder.setContentText("Notification");
@@ -77,10 +82,24 @@ public class DashboardActivity extends AppCompatActivity {
 
                 NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                 manager.notify(NOTIFY_ID,notification);
+                NotificationManager mNotificationManager =(NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), "notify_001");
+               // NotificationManager mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                {
+                    String channelId = CHANNEL_ID;
+                    NotificationChannel channel = new NotificationChannel(
+                            channelId,
+                            "MediCare",
+                            NotificationManager.IMPORTANCE_HIGH);
+                    mNotificationManager.createNotificationChannel(channel);
+                    mBuilder.setChannelId(channelId);
+                }
             }
         });
 
-        circleImageView = findViewById(R.id.session_profile_image);
+        profile_pic = findViewById(R.id.session_profile_image);
         user_name = findViewById(R.id.user_session_name);
         user_email = findViewById(R.id.user_session_email);
         imageView = findViewById(R.id.session_logout);
@@ -91,7 +110,7 @@ public class DashboardActivity extends AppCompatActivity {
         user_email.setText(session_user_email);
         bitmap = null;
 
-        circleImageView.setOnClickListener(new View.OnClickListener() {
+        profile_pic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -164,7 +183,7 @@ public class DashboardActivity extends AppCompatActivity {
                         if (bitmap == null) {
                             Toast.makeText(this, "Bitmap is null", Toast.LENGTH_SHORT).show();
                         } else {
-                            circleImageView.setImageBitmap(bitmap);
+                            profile_pic.setImageBitmap(bitmap);
                             Toast.makeText(this, "Image picked Successfully", Toast.LENGTH_SHORT).show();
                         }
                     } else {

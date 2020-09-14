@@ -23,7 +23,10 @@ public interface AppointmentRepo {
 
     @Query("select * from appointments ")
     LiveData<List<Appointment>> getAllAppointments();
+
     @Query("select * from appointments where userID==:userID")
     LiveData<List<Appointment>> getAllAppointmentsByUserId(int userID);
 
+    @Query("select * from appointments where userID==:userID")
+    List<Appointment> getListOfAppointmentsByUserId(int userID);
 }

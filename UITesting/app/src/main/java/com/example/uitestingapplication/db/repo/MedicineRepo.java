@@ -28,6 +28,8 @@ public interface MedicineRepo {
     @Query("select * from medicines where userID==:userID")
     LiveData<List<Medicine>> getAllMedicinesByUserID(int userID);
 
+    @Query("select * from medicines where userID==:userID")
+    List<Medicine> getListOfMedicinesByUserID(int userID);
 
 
 }

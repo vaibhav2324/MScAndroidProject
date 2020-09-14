@@ -28,8 +28,10 @@ import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.example.uitestingapplication.db.MedicareAppDatabase;
 import com.example.uitestingapplication.db.entity.Medicine;
+
 import java.util.ArrayList;
 import java.util.Calendar;
+
 import petrov.kristiyan.colorpicker.ColorPicker;
 
 
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements
     private Bitmap bitmap;
     private RadioGroup instructionRadioGroup, durationRadioGroup;
     private RadioButton ongoingTreatment, noOfDays, beforeEating, whileEating, afterEating, notMatters;
-    private EditText medName, metFileName;
+    private EditText medName, metFileName, days;
     private ImageView mImage, mBtnChoose, showMedicines, camera;
     private TextView textView;
     private LinearLayout color_change;
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements
         durationRadioGroup = findViewById(R.id.duration_radio_group);
         ongoingTreatment = findViewById(R.id.ongoing_treatment);
         noOfDays = findViewById(R.id.no_of_days);
+        days = findViewById(R.id.days_text);
         instructionRadioGroup = findViewById(R.id.instruction_radio_group);
         beforeEating = findViewById(R.id.before_eating);
         whileEating = findViewById(R.id.while_eating);
@@ -127,7 +130,6 @@ public class MainActivity extends AppCompatActivity implements
                 year = cal.get(Calendar.YEAR);
                 month = cal.get(Calendar.MONTH);
                 day = cal.get(Calendar.DAY_OF_MONTH);
-
                 DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, MainActivity.this, year, month, day);
                 datePickerDialog.show();
             }
@@ -243,6 +245,7 @@ public class MainActivity extends AppCompatActivity implements
 
                     }
                 }).show();
+
     }
 
     private boolean validations() {
@@ -265,6 +268,7 @@ public class MainActivity extends AppCompatActivity implements
         if (awesomeValidation.validate() && validations()) {
             medicine.setMedicineName(medName.getText().toString());
             medicine.setDate(textView.getText().toString());
+            medicine.setNod(days.getText().toString());
             medicine.setFileName(metFileName.getText().toString());
             medicine.setMedicineImage(ImageConverter.convertImageToByteArray(mImage));
             String onGoingTreatment = ongoingTreatment.getText().toString();
@@ -273,6 +277,8 @@ public class MainActivity extends AppCompatActivity implements
             String after = afterEating.getText().toString();
             String whileEat = whileEating.getText().toString();
             String notMatter = notMatters.getText().toString();
+
+            int id = new SessionManagement(getApplicationContext()).getUserIdBySession();
 
             if (beforeEating.isChecked()) {
                 medicine.setInstruction(before);
@@ -292,7 +298,6 @@ public class MainActivity extends AppCompatActivity implements
                 medicine.setTreatmentPeriod(numberOfDays);
             }
 
-            int id = new SessionManagement(getApplicationContext()).getUserIdBySession();
             medicine.setUserID(id);
             db.getMedicineRepo().insertMedicine(medicine);
             Intent moveToMedicineList = new Intent(MainActivity.this, ShowMedicineActivity.class);
@@ -300,6 +305,13 @@ public class MainActivity extends AppCompatActivity implements
             Toast.makeText(this, "Data Added Successfully", Toast.LENGTH_SHORT).show();
         }
     }
+
+//    public List<Medicine> notificationData()
+//    {
+//        LiveData<List<Medicine>> allMedicinesByUserID = db.getMedicineRepo().getAllMedicinesByUserID(id);
+//        List<Medicine> valueId = allMedicinesByUserID.getValue();
+//        return valueId;
+//    }
 
 
 

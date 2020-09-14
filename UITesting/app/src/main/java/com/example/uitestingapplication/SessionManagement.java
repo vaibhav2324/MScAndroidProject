@@ -23,6 +23,7 @@ public class SessionManagement {
         Log.i("i","test");
     }
 
+
     public void saveSession(Registration user){
         //save session of user whenever user is logged in
         int id = user.getId().intValue();

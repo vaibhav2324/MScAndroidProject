@@ -22,10 +22,9 @@
         android:contentDescription="@string/appointment_icon" />
 
     <TextView
-        android:layout_width="207dp"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_margin="10dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginEnd="180dp"
         android:fontFamily="@font/caudex_bold_italic"
         android:text="@string/title"
         android:textColor="@color/cardview_light_background"

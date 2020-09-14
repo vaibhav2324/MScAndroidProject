@@ -20,6 +20,7 @@ public class Medicine {
     private Long id;
     private String medicineName;
     private String date;
+    private String nod;
     private String instruction;
     private String treatmentPeriod;
     private String fileName;

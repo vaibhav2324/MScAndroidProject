@@ -110,4 +110,10 @@
     <string name="user_name_user_profile">User Name</string>
     <string name="logout_button">Logout Button</string>
     <string name="user_profile_photo">User Profile Photo</string>
+    <string name="medicine_notification_image">Medicine Notification Image</string>
+    <string name="medicine_instruction">Medicine Instruction</string>
+    <string name="medicine_date">Medicine Start Date</string>
+    <string name="it_is_time_to_take_medicine">It is time to take Medicine</string>
+    <string name="you_have_an_appointment">You have an Appointment</string>
+    <string name="appointment_date">Appointment Date</string>
 </resources>

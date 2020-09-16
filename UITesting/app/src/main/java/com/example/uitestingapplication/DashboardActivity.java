@@ -26,19 +26,31 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.TaskStackBuilder;
 import androidx.room.Room;
 
 import com.example.uitestingapplication.db.MedicareAppDatabase;
 import com.example.uitestingapplication.db.entity.Appointment;
 import com.example.uitestingapplication.db.entity.Medicine;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import static java.time.LocalDate.now;
+
 public class DashboardActivity extends AppCompatActivity {
+
+    public   int id=1;
+    public  DashboardActivity(){}
     private static final int NOTIFY_ID = 2020;
     private static final int CAMERA_INTENT = 51;
     private static final String CHANNEL_ID = "Medicare_notification";
@@ -55,16 +67,10 @@ public class DashboardActivity extends AppCompatActivity {
         final SharedPreferences pref = getApplicationContext().getSharedPreferences("session", 0); // 0 - for private mode
         db = Room.databaseBuilder(getApplicationContext(), MedicareAppDatabase.class, "medicareDB").allowMainThreadQueries().build();
 
-        Button button;
-        button = findViewById(R.id.notify);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                medicineNotification();
-                //appointmentNotification();
-            }
-        });
-
+        //TODO write a logic to trigger event on the time basis.
+        medicineNotification();
+        appointmentNotification();
+        
         profile_pic = findViewById(R.id.session_profile_image);
         user_name = findViewById(R.id.user_session_name);
         user_email = findViewById(R.id.user_session_email);
@@ -162,6 +168,7 @@ public class DashboardActivity extends AppCompatActivity {
                 break;
             }
         }
+
     public List<Medicine> medicineNotificationData()
     {
         int id = new SessionManagement(getApplicationContext()).getUserIdBySession();
@@ -171,122 +178,163 @@ public class DashboardActivity extends AppCompatActivity {
         //String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
 
     }
-        public  void medicineNotification()
-        {
-            List<Medicine> medicines = medicineNotificationData();
-            Medicine medicine = medicines.get(0);
+        public  void medicineNotification() {
+            List<Medicine> medicines = medicineNotificationData();            //
+            List<Medicine> activeAlert = new ArrayList<>();
+            for (Medicine m : medicines) {
+                String time = m.getDate().substring(16);
+                String date = m.getDate().substring(0, 9);
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy");
+                Date date2 = new Date();
+                String tim = date2.getHours() + ":" + date2.getMinutes();
+                String format = formatter.format(date2);
+                if (date.equalsIgnoreCase(format)) {
+                    try {
+                        SimpleDateFormat parser = new SimpleDateFormat("HH:mm");
+                        Date currentTime = parser.parse(tim);
+                        Date dbTime = parser.parse(time);
+                        if (currentTime.after(dbTime)) {
+                            activeAlert.add(m);
+                        }
+                    } catch (ParseException e) {
+                        // Invalid date was entered
+                    }
+                }
+            }
+            if (activeAlert.isEmpty()) {
+                return;
+            }
+            for (Medicine medicine:activeAlert) {
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(DashboardActivity.this);
+                builder.setChannelId(CHANNEL_ID);
+                builder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+                builder.setCategory(NotificationCompat.CATEGORY_REMINDER);
+                builder.setSmallIcon(R.mipmap.ic_launcher_round);
+                builder.setLargeIcon(ImageConverter.convertByteArrayToImage(medicine.getMedicineImage()));
+                builder.setContentTitle(medicine.getMedicineName());
+                builder.setContentText(medicine.getInstruction());
+                builder.setLights(Color.BLUE, 200, 200);
+                Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+                builder.setSound(soundUri);
+                long[] vibrate = {100, 500, 100, 500};
+                builder.setVibrate(vibrate);
 
+                //create pending activity
+                Intent intent = new Intent(DashboardActivity.this, MedicineNotification.class);
+                intent.putExtra("key", NOTIFY_ID);
+                PendingIntent pendingIntent = PendingIntent.getActivity(DashboardActivity.this, 123, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                builder.setContentIntent(pendingIntent);
+
+//            NotificationCompat.Action.Builder actionBuilder = new NotificationCompat.Action.Builder(R.mipmap.ic_launcher_round,"Action 1",pendingIntent);
+//            NotificationCompat.Action action = actionBuilder.build();
+//            builder.addAction(action);
+//            builder.addAction(R.mipmap.ic_launcher_round,"Action 2",pendingIntent);
+
+                NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();
+                bigPictureStyle.bigPicture(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
+
+                builder.setStyle(bigPictureStyle);
+
+                Notification notification = builder.build();
+
+                NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                manager.notify(NOTIFY_ID, notification);
+                NotificationManager mNotificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), "notify_001");
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    String channelId = CHANNEL_ID;
+                    NotificationChannel channel = new NotificationChannel(
+                            channelId,
+                            "Medicines",
+                            NotificationManager.IMPORTANCE_HIGH);
+                    mNotificationManager.createNotificationChannel(channel);
+                    mBuilder.setChannelId(channelId);
+                }
+
+                mNotificationManager.notify(0, notification);
+            }
+
+            }
+
+        public List<Appointment> appointmentNotificationData()
+        {
+//        int id = new SessionManagement(getApplicationContext()).getUserIdBySession();
+            return db.getAppointmentRepo().getListOfAppointmentsByUserId(id);
+        }
+
+    public  void appointmentNotification() {
+        List<Appointment> appointments = appointmentNotificationData();
+        List<Appointment> activeAlert = new ArrayList<>();
+        for (Appointment m : appointments) {
+            String time = m.getDateAndTime().substring(16);
+            String date = m.getDateAndTime().substring(0, 9);
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy");
+            Date date2 = new Date();
+            String tim = date2.getHours() + ":" + date2.getMinutes();
+            String format = formatter.format(date2);
+            if (date.equalsIgnoreCase(format)) {
+                try {
+                    SimpleDateFormat parser = new SimpleDateFormat("HH:mm");
+                    Date currentTime = parser.parse(tim);
+                    Date dbTime = parser.parse(time);
+                    if (currentTime.after(dbTime)) {
+                        activeAlert.add(m);
+                    }
+                } catch (ParseException e) {
+                    // Invalid date was entered
+                }
+            }
+        }
+        if (activeAlert.isEmpty()) {
+            return;
+        }
+        for (Appointment appointment : activeAlert) {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(DashboardActivity.this);
             builder.setChannelId(CHANNEL_ID);
             builder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
             builder.setCategory(NotificationCompat.CATEGORY_REMINDER);
             builder.setSmallIcon(R.mipmap.ic_launcher_round);
-            builder.setLargeIcon(ImageConverter.convertByteArrayToImage(medicine.getMedicineImage()));
-            builder.setColor(1);
-            builder.setContentTitle(medicine.getMedicineName());
-            builder.setContentText(medicine.getInstruction());
-            builder.setLights(Color.BLUE,200,200);
-            Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+            builder.setContentTitle(appointment.getAppointmentTitle());
+            builder.setContentText(appointment.getDoctorName());
+            builder.setLights(Color.BLUE, 200, 200);
+            Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             builder.setSound(soundUri);
-            long[] vibrate = {100,500,100,500};
+            long[] vibrate = {100, 500, 100, 500};
             builder.setVibrate(vibrate);
 
             //create pending activity
-            Intent intent = new Intent(DashboardActivity.this,DashboardActivity.class);
-            intent.putExtra("key",NOTIFY_ID);
-            PendingIntent pendingIntent = PendingIntent.getActivity(DashboardActivity.this, 123,intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            Intent intent = new Intent(DashboardActivity.this, Appointment_Notification.class);
+            intent.putExtra("key", NOTIFY_ID);
+            PendingIntent pendingIntent = PendingIntent.getActivity(DashboardActivity.this, 123, intent, PendingIntent.FLAG_UPDATE_CURRENT);
             builder.setContentIntent(pendingIntent);
 
-            NotificationCompat.Action.Builder actionBuilder = new NotificationCompat.Action.Builder(R.mipmap.ic_launcher_round,"Action 1",pendingIntent);
-            NotificationCompat.Action action = actionBuilder.build();
-            builder.addAction(action);
-            builder.addAction(R.mipmap.ic_launcher_round,"Action 2",pendingIntent);
+//        NotificationCompat.Action.Builder actionBuilder = new NotificationCompat.Action.Builder(R.mipmap.ic_launcher_round,"Action 1",pendingIntent);
+//        NotificationCompat.Action action = actionBuilder.build();
+//        builder.addAction(action);
+//        builder.addAction(R.mipmap.ic_launcher_round,"Action 2",pendingIntent);
 
             NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();
-            bigPictureStyle.bigPicture(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher));
+            bigPictureStyle.bigPicture(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
 
             builder.setStyle(bigPictureStyle);
 
             Notification notification = builder.build();
 
-            NotificationManager manager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            manager.notify(NOTIFY_ID,notification);
-            NotificationManager mNotificationManager =(NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            manager.notify(NOTIFY_ID, notification);
+            NotificationManager mNotificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), "notify_001");
-            // NotificationManager mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-            {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 String channelId = CHANNEL_ID;
                 NotificationChannel channel = new NotificationChannel(
                         channelId,
-                        "MediCare",
+                        "Appointment",
                         NotificationManager.IMPORTANCE_HIGH);
                 mNotificationManager.createNotificationChannel(channel);
                 mBuilder.setChannelId(channelId);
             }
-        }
-
-        public List<Appointment> appointmentNotificationData()
-        {
-            int id = new SessionManagement(getApplicationContext()).getUserIdBySession();
-
-            List<Appointment> listOfAppointmentsByUserId = db.getAppointmentRepo().getListOfAppointmentsByUserId(id);
-            return listOfAppointmentsByUserId;
-        }
-
-    public  void appointmentNotification()
-    {
-        List<Appointment> appointments = appointmentNotificationData();
-        Appointment appointment = appointments.get(0);
-
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(DashboardActivity.this);
-        builder.setChannelId(CHANNEL_ID);
-        builder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
-        builder.setCategory(NotificationCompat.CATEGORY_REMINDER);
-        builder.setSmallIcon(R.mipmap.ic_launcher_round);
-        builder.setContentTitle(appointment.getAppointmentTitle());
-        builder.setContentText(appointment.getDoctorName());
-        builder.setLights(Color.BLUE,200,200);
-        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        builder.setSound(soundUri);
-        long[] vibrate = {100,500,100,500};
-        builder.setVibrate(vibrate);
-
-        //create pending activity
-        Intent intent = new Intent(DashboardActivity.this,DashboardActivity.class);
-        intent.putExtra("key",NOTIFY_ID);
-        PendingIntent pendingIntent = PendingIntent.getActivity(DashboardActivity.this, 123,intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(pendingIntent);
-
-        NotificationCompat.Action.Builder actionBuilder = new NotificationCompat.Action.Builder(R.mipmap.ic_launcher_round,"Action 1",pendingIntent);
-        NotificationCompat.Action action = actionBuilder.build();
-        builder.addAction(action);
-        builder.addAction(R.mipmap.ic_launcher_round,"Action 2",pendingIntent);
-
-        NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();
-        bigPictureStyle.bigPicture(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher));
-
-        builder.setStyle(bigPictureStyle);
-
-        Notification notification = builder.build();
-
-        NotificationManager manager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        manager.notify(NOTIFY_ID,notification);
-        NotificationManager mNotificationManager =(NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), "notify_001");
-        // NotificationManager mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-        {
-            String channelId = CHANNEL_ID;
-            NotificationChannel channel = new NotificationChannel(
-                    channelId,
-                    "MediCare",
-                    NotificationManager.IMPORTANCE_HIGH);
-            mNotificationManager.createNotificationChannel(channel);
-            mBuilder.setChannelId(channelId);
         }
     }
     }

@@ -90,11 +90,7 @@
                 android:layout_marginStart="10dp"
                 android:contentDescription="@string/logout_button"
                 android:src="@drawable/logout"/>
-            <Button
-                android:id="@+id/notify"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Notify"/>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"

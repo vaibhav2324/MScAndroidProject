@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71dc5948-ca6f-4a77-b47b-0b4ad760ef9a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/msc/app/src/main/java/com/example/medicare/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/msc/app/src/main/java/com/example/medicare/data/DatabaseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/msc/app/src/main/java/com/example/medicare/data/model/LoggedInUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/msc/app/src/main/java/com/example/medicare/model/LoggedInUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UITesting/app/src/main/java/com/example/uitestingapplication/AlarmReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UITesting/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UITesting/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UITesting/app/src/main/java/com/example/uitestingapplication/DashboardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UITesting/app/src/main/java/com/example/uitestingapplication/DashboardActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +17,7 @@
   </component>
   <component name="ProjectId" id="1ZnAqu2ugJxYoF1p8BW1IzQItlD" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/msc/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -54,7 +55,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
